@@ -7,6 +7,35 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
+/* PASSWORD GATE */
+#gate{position:fixed;inset:0;background:var(--sangria-deep, #3D1020);z-index:9999;display:flex;align-items:center;justify-content:center;padding:2rem;}
+#gate.hidden{display:none;}
+.gate-box{width:100%;max-width:380px;text-align:center;}
+.gate-logo{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#FAF5F0;margin-bottom:2.5rem;}
+.gate-logo span{color:#C4748A;}
+.gate-box h2{font-family:'Playfair Display',serif;font-size:20px;color:#FAF5F0;margin-bottom:.5rem;font-weight:400;}
+.gate-box p{font-size:14px;color:rgba(250,245,240,.5);margin-bottom:2rem;}
+.gate-input-wrap{display:flex;gap:0;background:rgba(250,245,240,.07);border:1px solid rgba(196,116,138,.3);border-radius:100px;overflow:hidden;margin-bottom:.75rem;}
+.gate-input-wrap input{flex:1;background:transparent;border:none;padding:14px 22px;font-size:15px;color:#FAF5F0;font-family:'DM Sans',sans-serif;outline:none;}
+.gate-input-wrap input::placeholder{color:rgba(250,245,240,.3);}
+.gate-input-wrap button{background:#9E3D55;border:none;padding:10px 24px;margin:6px;border-radius:100px;color:#FAF5F0;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;white-space:nowrap;}
+.gate-input-wrap button:hover{background:#A0442A;}
+.gate-error{font-size:13px;color:#C4748A;min-height:1.2em;}
+</style>
+<script>
+// Password gate — runs before anything else renders
+// Change 'spinchirp2026' to whatever password you want
+const GATE_PASSWORD = 'spinchirp2026';
+(function() {
+  if (sessionStorage.getItem('sc_unlocked') === '1') {
+    document.addEventListener('DOMContentLoaded', function() {
+      var g = document.getElementById('gate');
+      if (g) g.classList.add('hidden');
+    });
+  }
+})();
+</script>
+<style>
 :root {
   --sangria:#7B2D42; --sangria-dark:#5C1F30; --sangria-deep:#3D1020;
   --sangria-mid:#9E3D55; --sangria-light:#C4748A; --sangria-pale:#F5E8EC;
@@ -299,6 +328,20 @@ footer{background:var(--sangria-deep);border-top:1px solid rgba(196,116,138,.15)
 </style>
 </head>
 <body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">Spin<span>Chirp</span></div>
+    <h2>Coming soon</h2>
+    <p>Enter the password to preview the site.</p>
+    <div class="gate-input-wrap">
+      <input type="password" id="gate-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkGate()"/>
+      <button onclick="checkGate()">Enter</button>
+    </div>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+</div>
 
 <!-- ALERTS MODAL -->
 <div class="modal-overlay" id="alerts-modal">
@@ -1425,6 +1468,24 @@ function showProfileTab(tabId) {
     if (btn) { btn.style.background = id === tabId ? 'var(--sangria-pale)' : 'transparent'; btn.style.color = id === tabId ? 'var(--sangria-dark)' : '#666'; btn.style.fontWeight = id === tabId ? '500' : 'normal'; }
   });
 }
+
+// ===== PASSWORD GATE =====
+function checkGate() {
+  const input = document.getElementById('gate-input').value;
+  if (input === GATE_PASSWORD) {
+    sessionStorage.setItem('sc_unlocked', '1');
+    document.getElementById('gate').classList.add('hidden');
+  } else {
+    document.getElementById('gate-error').textContent = 'Incorrect password.';
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-input').focus();
+  }
+}
+(function() {
+  if (sessionStorage.getItem('sc_unlocked') === '1') {
+    document.getElementById('gate').classList.add('hidden');
+  }
+})();
 
 const JOBS = {};
 document.querySelectorAll('.job-card[data-id]').forEach(c => {
