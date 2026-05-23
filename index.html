@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SpinChirp — Music Industry Jobs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --sangria:#7B2D42; --sangria-dark:#5C1F30; --sangria-deep:#3D1020;
+  --sangria-mid:#9E3D55; --sangria-light:#C4748A; --sangria-pale:#F5E8EC;
+  --rust:#A0442A; --cream:#FAF5F0; --ink:#1A0A0F;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+.page{display:none;} .page.active{display:block;}
+
+/* NAV */
+nav{background:var(--sangria-deep);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:2px solid var(--sangria-mid);position:sticky;top:0;z-index:200;}
+.nav-left{display:flex;align-items:center;gap:2rem;}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
+@keyframes vinylspin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.logo-text{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--cream);}
+.logo-text span{color:var(--sangria-light);}
+.nav-main-links{display:flex;gap:1.5rem;align-items:center;list-style:none;}
+.nav-main-links a{color:rgba(250,245,240,0.7);text-decoration:none;font-size:14px;transition:color .2s;cursor:pointer;}
+.nav-main-links a:hover{color:var(--cream);}
+.nav-right{display:flex;gap:1rem;align-items:center;list-style:none;}
+.nav-right a{color:rgba(250,245,240,0.7);text-decoration:none;font-size:14px;transition:color .2s;cursor:pointer;}
+.nav-right a:hover{color:var(--cream);}
+.nav-right .btn-login{border:1px solid rgba(250,245,240,0.3);padding:7px 18px;border-radius:100px;font-size:13px;transition:border-color .2s;}
+.nav-right .btn-login:hover{border-color:rgba(250,245,240,0.7);color:var(--cream);}
+.nav-right .btn-signup{background:rgba(250,245,240,0.12);color:var(--cream)!important;padding:7px 18px;border-radius:100px;font-size:13px;font-weight:500;transition:background .2s;}
+.nav-right .btn-signup:hover{background:rgba(250,245,240,0.2);}
+.nav-right .btn-post{background:var(--sangria-mid);color:var(--cream)!important;padding:8px 20px;border-radius:100px;font-weight:500;font-size:14px;transition:background .2s;}
+.nav-right .btn-post:hover{background:var(--rust);}
+.nav-right .btn-alerts{color:rgba(250,245,240,0.7);font-size:13px;cursor:pointer;}
+.nav-right .btn-alerts:hover{color:var(--cream);}
+
+/* HERO */
+.hero{background:var(--sangria-deep);padding:0;text-align:center;position:relative;overflow:hidden;}
+.hero-rule{height:1px;background:rgba(196,116,138,.25);position:relative;z-index:2;}
+.hero-inner{padding:4rem 2rem 3.5rem;position:relative;z-index:2;}
+.hero-vinyl-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:540px;height:540px;pointer-events:none;z-index:1;border-radius:50%;overflow:hidden;}
+.hero-vinyl-dim{position:absolute;inset:0;opacity:0.1;animation:vinylspin 12s linear infinite;will-change:transform;border-radius:50%;overflow:hidden;}
+.hero-vinyl-dim svg{width:100%;height:100%;display:block;}
+.hero-vinyl-bright{position:absolute;inset:-20px;opacity:0.45;animation:vinylspin 12s linear infinite;will-change:transform;border-radius:50%;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,transparent 28%,rgba(0,0,0,0.04) 34%,rgba(0,0,0,0.65) 42%,rgba(0,0,0,0.95) 48%,rgba(0,0,0,0.95) 52%,rgba(0,0,0,0.65) 58%,rgba(0,0,0,0.04) 66%,transparent 72%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0%,transparent 28%,rgba(0,0,0,0.04) 34%,rgba(0,0,0,0.65) 42%,rgba(0,0,0,0.95) 48%,rgba(0,0,0,0.95) 52%,rgba(0,0,0,0.65) 58%,rgba(0,0,0,0.04) 66%,transparent 72%,transparent 100%);}
+.hero-vinyl-bright svg{width:100%;height:100%;display:block;}
+
+.hero h1{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--cream);line-height:1.15;margin-bottom:1rem;position:relative;}
+.hero h1 .pink{color:var(--sangria-light);}
+.hero-sub{color:rgba(250,245,240,.6);font-size:16px;max-width:480px;margin:0 auto 2.5rem;line-height:1.6;font-weight:300;position:relative;}
+.search-bar{display:flex;max-width:580px;margin:0 auto;background:rgba(250,245,240,.07);border:1px solid rgba(196,116,138,.3);border-radius:100px;overflow:hidden;}
+.search-bar input{flex:1;background:transparent;border:none;padding:15px 22px;font-size:15px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;}
+.search-bar input::placeholder{color:rgba(250,245,240,.35);}
+.search-bar button{background:var(--sangria-mid);border:none;padding:10px 26px;margin:7px;border-radius:100px;color:var(--cream);font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:background .2s;}
+.search-bar button:hover{background:var(--rust);}
+
+/* STATS */
+.stats-bar{background:var(--sangria-dark);border-bottom:1px solid rgba(196,116,138,.15);display:flex;justify-content:center;gap:4rem;padding:1.25rem 2rem;}
+.stat{text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--cream);display:block;}
+.stat-label{font-size:11px;color:var(--sangria-light);letter-spacing:.12em;text-transform:uppercase;}
+
+/* FILTER PANEL */
+.filter-panel{background:white;border-bottom:1px solid rgba(123,45,66,.1);padding:0 2.5rem;}
+.filter-panel-inner{max-width:960px;margin:0 auto;display:flex;flex-direction:column;}
+.filter-row{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;padding:1rem 0;margin:0 -2.5rem;padding-left:2.5rem;padding-right:2.5rem;}
+.filter-row:nth-child(odd){background:white;}
+.filter-row:nth-child(even){background:rgba(245,232,236,0.35);}
+.filter-row-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--sangria-light);white-space:nowrap;min-width:85px;}
+.pill-group{display:flex;gap:6px;flex-wrap:wrap;}
+.fpill{padding:5px 16px;border-radius:100px;font-size:13px;cursor:pointer;border:1px solid rgba(123,45,66,.25);background:transparent;color:var(--sangria);font-family:'DM Sans',sans-serif;transition:all .15s;white-space:nowrap;}
+.fpill.active,.fpill:hover{background:var(--sangria);color:var(--cream);border-color:var(--sangria);}
+
+/* salary inline */
+.salary-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.salary-currency{border:1px solid rgba(123,45,66,.25);border-radius:8px;padding:5px 8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);background:white;outline:none;cursor:pointer;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239E3D55' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;padding-right:22px;}
+.sal-input-wrap{display:flex;align-items:center;border:1px solid rgba(123,45,66,.25);border-radius:8px;overflow:hidden;background:white;}
+.sal-input-wrap input{border:none;padding:5px 8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;width:80px;background:transparent;}
+.sal-input-wrap span{font-size:11px;color:#bbb;padding:0 8px;border-left:1px solid rgba(123,45,66,.12);white-space:nowrap;}
+.sal-range{width:140px;-webkit-appearance:none;height:4px;border-radius:2px;background:linear-gradient(to right,var(--sangria) 0%,var(--sangria) var(--pct,10%),rgba(123,45,66,.2) var(--pct,10%),rgba(123,45,66,.2) 100%);outline:none;cursor:pointer;}
+.sal-range::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--sangria);border:2px solid white;box-shadow:0 1px 4px rgba(123,45,66,.3);cursor:pointer;}
+.sal-timeframe{border:1px solid rgba(123,45,66,.25);border-radius:8px;padding:5px 8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);background:white;outline:none;cursor:pointer;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239E3D55' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;padding-right:22px;}
+
+/* city */
+.city-wrap{position:relative;}
+.city-search-input{border:1px solid rgba(123,45,66,.25);border-radius:100px;padding:5px 14px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;background:white;transition:border-color .15s;width:175px;}
+.city-search-input:focus{border-color:var(--sangria-mid);}
+.city-search-input::placeholder{color:#bbb;}
+.city-dropdown{position:absolute;top:calc(100% + 4px);left:0;background:white;border:1px solid rgba(123,45,66,.2);border-radius:10px;z-index:300;min-width:175px;max-height:200px;overflow-y:auto;display:none;box-shadow:0 4px 16px rgba(123,45,66,.12);}
+.city-dropdown.open{display:block;}
+.city-option{padding:8px 14px;font-size:13px;cursor:pointer;color:#555;transition:background .1s;}
+.city-option:hover,.city-option.selected{background:var(--sangria-pale);color:var(--sangria-dark);}
+.city-tags{display:flex;flex-wrap:wrap;gap:5px;margin-left:4px;}
+.city-tag{display:flex;align-items:center;gap:4px;background:var(--sangria-pale);color:var(--sangria-dark);border:1px solid rgba(123,45,66,.2);border-radius:100px;padding:3px 8px 3px 11px;font-size:12px;font-weight:500;}
+.city-tag button{background:none;border:none;cursor:pointer;color:var(--sangria-mid);font-size:13px;line-height:1;padding:0 0 0 2px;}
+.clear-all-btn{font-size:12px;color:var(--sangria-mid);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;white-space:nowrap;margin-left:auto;}
+.clear-all-btn:hover{color:var(--sangria);text-decoration:underline;}
+
+/* MAIN */
+.main-wrap{max-width:960px;margin:0 auto;padding:2rem 2.5rem 4rem;}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid rgba(123,45,66,.15);}
+.section-head h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--sangria-dark);}
+.section-head span{font-size:13px;color:var(--sangria-mid);}
+
+/* JOB CARDS */
+.jobs{display:flex;flex-direction:column;gap:12px;}
+.job-card{background:white;border:1px solid rgba(123,45,66,.12);border-left:3px solid transparent;border-radius:12px;padding:1.25rem 1.5rem;display:grid;grid-template-columns:52px 1fr auto;gap:1rem;align-items:center;cursor:pointer;transition:all .2s;text-decoration:none;color:inherit;position:relative;}
+.job-card:hover{border-left-color:var(--sangria-mid);box-shadow:0 4px 24px rgba(123,45,66,.1);transform:translateX(3px);}
+.job-card.featured{border-left-color:var(--sangria);background:var(--sangria-pale);}
+.job-card.hidden{display:none;}
+.job-card.saved .save-btn{color:var(--sangria);border-color:var(--sangria);}
+.job-logo{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;flex-shrink:0;}
+.job-title{font-size:16px;font-weight:500;color:var(--ink);margin-bottom:4px;}
+.job-meta{font-size:13px;color:#999;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.job-meta .dot{color:#ddd;}
+.job-deadline{font-size:11px;color:#bbb;margin-top:4px;}
+.job-deadline.soon{color:#BF360C;font-weight:500;}
+.job-right{text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.tag{display:inline-block;padding:3px 11px;border-radius:100px;font-size:11px;font-weight:500;letter-spacing:.04em;}
+.tag-remote{background:#E8F5E9;color:#2E7D32;}
+.tag-featured{background:var(--sangria-pale);color:var(--sangria-dark);}
+.tag-hybrid{background:#FFF3E0;color:#BF360C;}
+.tag-onsite{background:#E3F2FD;color:#1565C0;}
+.job-date{font-size:12px;color:#bbb;}
+.save-btn{background:none;border:none;cursor:pointer;font-size:12px;color:#aaa;transition:color .15s;padding:3px 8px;font-family:"DM Sans",sans-serif;border:1px solid rgba(123,45,66,.15);border-radius:100px;line-height:1.4;}
+.save-btn:hover{color:var(--sangria);border-color:rgba(123,45,66,.35);}
+.apply-btn{background:var(--sangria-mid);color:white;border:none;border-radius:100px;padding:7px 18px;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:background .2s;text-decoration:none;display:inline-block;}
+.apply-btn:hover{background:var(--rust);}
+.expired-badge{font-size:11px;color:#bbb;background:#f5f5f5;border-radius:100px;padding:3px 10px;font-weight:500;}
+
+.no-results{text-align:center;padding:3rem 1rem;color:#aaa;font-size:15px;display:none;}
+.no-results span{display:block;font-family:'Playfair Display',serif;font-size:22px;color:var(--sangria-light);margin-bottom:.5rem;}
+
+/* SAVED JOBS PANEL */
+.saved-panel{background:white;border:1px solid rgba(123,45,66,.12);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;display:none;}
+.saved-panel.has-saves{display:block;}
+.saved-panel-title{font-family:'Playfair Display',serif;font-size:16px;color:var(--sangria-dark);margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;}
+.saved-panel-title button{font-size:12px;color:var(--sangria-mid);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.saved-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.saved-chip{display:flex;align-items:center;gap:6px;background:var(--sangria-pale);color:var(--sangria-dark);border:1px solid rgba(123,45,66,.2);border-radius:100px;padding:5px 10px 5px 14px;font-size:13px;font-weight:500;cursor:pointer;}
+.saved-chip:hover{background:#edd8de;}
+.saved-chip button{background:none;border:none;cursor:pointer;color:var(--sangria-mid);font-size:14px;line-height:1;}
+
+/* COMPANY PAGES */
+.companies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:2rem;}
+.company-card{background:white;border:1px solid rgba(123,45,66,.12);border-radius:12px;padding:1.25rem;cursor:pointer;transition:all .2s;}
+.company-card:hover{box-shadow:0 4px 20px rgba(123,45,66,.1);transform:translateY(-2px);}
+.company-logo-lg{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:.75rem;}
+.company-name{font-size:16px;font-weight:500;color:var(--ink);margin-bottom:.25rem;}
+.company-meta{font-size:13px;color:#999;}
+.company-open{font-size:12px;color:var(--sangria-mid);margin-top:.5rem;font-weight:500;}
+
+/* COMPANY PROFILE PAGE */
+.company-profile-header{background:var(--sangria-deep);padding:2.5rem 2rem;position:relative;overflow:hidden;}
+.company-profile-header::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(196,116,138,.1);}
+.cp-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;}
+.cp-logo{width:72px;height:72px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:24px;font-weight:700;flex-shrink:0;}
+.cp-info h1{font-family:'Playfair Display',serif;font-size:28px;color:var(--cream);margin-bottom:.25rem;}
+.cp-info p{color:rgba(250,245,240,.6);font-size:14px;}
+.cp-info .cp-tags{display:flex;gap:8px;margin-top:.5rem;flex-wrap:wrap;}
+.cp-tag{background:rgba(196,116,138,.15);color:var(--sangria-light);border-radius:100px;padding:3px 12px;font-size:12px;}
+.back-crumb{color:rgba(250,245,240,.5);font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;margin-bottom:1rem;}
+.back-crumb:hover{color:var(--cream);}
+
+/* CTA */
+.cta{margin-top:3rem;background:var(--sangria-deep);border-radius:16px;padding:3rem 2.5rem;text-align:center;}
+.cta h3{font-family:'Playfair Display',serif;font-size:28px;color:var(--cream);margin-bottom:.6rem;}
+.cta p{color:rgba(250,245,240,.6);font-size:15px;margin-bottom:1.75rem;font-weight:300;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:var(--sangria-mid);color:var(--cream);border:none;padding:13px 30px;border-radius:100px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;}
+.btn-primary:hover{background:var(--rust);}
+.btn-secondary{background:transparent;color:var(--cream);border:1px solid rgba(250,245,240,.3);padding:13px 30px;border-radius:100px;font-size:15px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:border-color .2s;}
+.btn-secondary:hover{border-color:rgba(250,245,240,.7);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ALERTS MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:16px;padding:2rem;max-width:440px;width:90%;position:relative;}
+.modal h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--sangria-dark);margin-bottom:.5rem;}
+.modal p{font-size:14px;color:#888;margin-bottom:1.5rem;line-height:1.6;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:20px;cursor:pointer;color:#aaa;}
+.modal-close:hover{color:var(--ink);}
+.modal .field{margin-bottom:1rem;}
+.modal .field label{display:block;font-size:13px;font-weight:500;color:var(--sangria-dark);margin-bottom:5px;}
+.modal .field input,.modal .field select{width:100%;border:1px solid rgba(123,45,66,.22);border-radius:8px;padding:10px 14px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;transition:border-color .15s;-webkit-appearance:none;background:white;}
+.modal .field input:focus,.modal .field select:focus{border-color:var(--sangria-mid);}
+.modal .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239E3D55' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+.freq-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.freq-pill{padding:6px 16px;border-radius:100px;font-size:13px;cursor:pointer;border:1px solid rgba(123,45,66,.25);background:transparent;color:var(--sangria);font-family:'DM Sans',sans-serif;transition:all .15s;}
+.freq-pill.active{background:var(--sangria);color:var(--cream);border-color:var(--sangria);}
+.modal-submit{width:100%;background:var(--sangria);color:var(--cream);border:none;padding:13px;border-radius:100px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;margin-top:1.25rem;}
+.modal-submit:hover{background:var(--sangria-dark);}
+.modal-success{text-align:center;padding:1rem 0;}
+.modal-success .ms-icon{font-size:48px;margin-bottom:1rem;}
+.modal-success p{color:#888;font-size:14px;line-height:1.6;}
+
+/* FOOTER */
+footer{background:var(--sangria-deep);border-top:1px solid rgba(196,116,138,.15);padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--cream);}
+.footer-logo span{color:var(--sangria-light);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{color:rgba(250,245,240,.5);font-size:13px;text-decoration:none;transition:color .2s;cursor:pointer;}
+.footer-links a:hover{color:var(--cream);}
+.footer-copy{color:rgba(250,245,240,.3);font-size:12px;width:100%;text-align:center;margin-top:.5rem;}
+
+/* POST PAGE */
+.page-header{background:var(--sangria-deep);padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+.page-header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:500px;height:500px;border-radius:50%;border:1px solid rgba(196,116,138,.1);pointer-events:none;}
+.page-header .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sangria-light);margin-bottom:.75rem;font-weight:500;}
+.page-header h1{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:var(--cream);margin-bottom:.75rem;}
+.page-header h1 .pink{color:var(--sangria-light);}
+.page-header p{color:rgba(250,245,240,.6);font-size:16px;font-weight:300;max-width:440px;margin:0 auto;line-height:1.6;}
+.free-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(196,116,138,.15);border:1px solid rgba(196,116,138,.3);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--sangria-light);margin-top:1.25rem;font-weight:500;}
+.free-badge::before{content:'';font-size:10px;}
+.form-wrap{max-width:720px;margin:2.5rem auto;padding:0 2rem 4rem;}
+.form-section{background:white;border:1px solid rgba(123,45,66,.12);border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+.form-section-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;color:var(--sangria-dark);margin-bottom:.25rem;}
+.form-section-sub{font-size:13px;color:#aaa;margin-bottom:1.5rem;}
+.form-section-divider{height:1px;background:rgba(123,45,66,.08);margin:1.5rem 0;}
+.field{margin-bottom:1.25rem;}
+.field:last-child{margin-bottom:0;}
+.field label{display:block;font-size:13px;font-weight:500;color:var(--sangria-dark);margin-bottom:6px;}
+.field label .req{color:var(--sangria-mid);margin-left:2px;}
+.field input,.field select,.field textarea{width:100%;border:1px solid rgba(123,45,66,.22);border-radius:8px;padding:10px 14px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);background:white;outline:none;transition:border-color .15s;-webkit-appearance:none;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--sangria-mid);box-shadow:0 0 0 3px rgba(158,61,85,.08);}
+.field input::placeholder,.field textarea::placeholder{color:#c0b8b8;}
+.field textarea{resize:vertical;min-height:120px;line-height:1.6;}
+.field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239E3D55' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+.field .hint{font-size:12px;color:#bbb;margin-top:5px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.salary-fields{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:8px;align-items:center;}
+.salary-fields .sep{text-align:center;color:#bbb;font-size:14px;}
+.salary-fields select{padding:10px 30px 10px 10px;}
+.tag-select{display:flex;flex-wrap:wrap;gap:7px;}
+.tag-select .ts-opt{padding:5px 14px;border-radius:100px;font-size:13px;cursor:pointer;border:1px solid rgba(123,45,66,.25);background:transparent;color:#777;font-family:'DM Sans',sans-serif;transition:all .15s;user-select:none;}
+.tag-select .ts-opt.on{background:var(--sangria);color:var(--cream);border-color:var(--sangria);}
+.upload-zone{border:1.5px dashed rgba(123,45,66,.3);border-radius:10px;padding:1.5rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--sangria-pale);}
+.upload-zone:hover{border-color:var(--sangria-mid);background:#f0dde4;}
+.upload-zone .uz-icon{font-size:28px;margin-bottom:8px;}
+.upload-zone .uz-label{font-size:14px;color:var(--sangria-dark);font-weight:500;}
+.upload-zone .uz-sub{font-size:12px;color:var(--sangria-light);margin-top:3px;}
+.upload-zone input[type=file]{display:none;}
+.preview-card{border:1px solid rgba(123,45,66,.12);border-left:3px solid var(--sangria);border-radius:12px;padding:1.25rem 1.5rem;display:grid;grid-template-columns:52px 1fr auto;gap:1rem;align-items:center;background:var(--sangria-pale);margin-top:1.25rem;}
+.preview-logo{width:52px;height:52px;border-radius:10px;background:white;border:1px solid rgba(123,45,66,.15);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--sangria);}
+.preview-title{font-size:16px;font-weight:500;color:var(--ink);margin-bottom:4px;}
+.preview-meta{font-size:13px;color:#aaa;}
+.preview-tag{display:inline-block;padding:3px 11px;border-radius:100px;font-size:11px;font-weight:500;background:#E3F2FD;color:#1565C0;}
+.submit-section{text-align:center;}
+.submit-btn{background:var(--sangria);color:var(--cream);border:none;padding:16px 48px;border-radius:100px;font-size:16px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;}
+.submit-btn:hover{background:var(--sangria-dark);}
+.submit-note{font-size:13px;color:#bbb;margin-top:.75rem;}
+.success-screen{display:none;text-align:center;padding:4rem 2rem;}
+.success-screen h2{font-family:'Playfair Display',serif;font-size:32px;color:var(--sangria-dark);margin-bottom:.75rem;}
+.success-screen p{font-size:16px;color:#888;max-width:380px;margin:0 auto 2rem;line-height:1.6;font-weight:300;}
+.back-link{background:transparent;color:var(--sangria-mid);border:1px solid rgba(123,45,66,.3);padding:12px 28px;border-radius:100px;font-size:15px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;display:inline-block;}
+.back-link:hover{background:var(--sangria-pale);}
+
+@media(max-width:768px){
+  .filter-row{flex-direction:column;align-items:flex-start;gap:.5rem;}
+  .hero h1{font-size:36px;}
+  .stats-bar{gap:2rem;flex-wrap:wrap;}
+  .job-card{grid-template-columns:44px 1fr;}
+  .job-right{display:none;}
+  .field-row{grid-template-columns:1fr;}
+  .salary-fields{grid-template-columns:auto 1fr;}
+  .salary-fields .sep{display:none;}
+  .companies-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ALERTS MODAL -->
+<div class="modal-overlay" id="alerts-modal">
+  <div class="modal" style="max-width:780px;width:95%;">
+    <button class="modal-close" onclick="closeAlerts()">✕</button>
+    <div id="alerts-form-view">
+      <h2>Job alerts</h2>
+      <p style="margin-bottom:1.5rem;">Get matching roles sent to your inbox. Only email and frequency are required — everything else narrows your results.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 2rem;align-items:start;">
+
+        <!-- LEFT COLUMN -->
+        <div>
+          <div class="field">
+            <label>Email address <span style="color:var(--sangria-mid);">*</span></label>
+            <input type="email" id="alert-email" placeholder="you@example.com"/>
+          </div>
+          <div class="field">
+            <label>How often? <span style="color:var(--sangria-mid);">*</span></label>
+            <div class="freq-pills">
+              <button class="freq-pill active" data-freq="daily">Daily</button>
+              <button class="freq-pill" data-freq="2x">Twice a week</button>
+              <button class="freq-pill" data-freq="weekly">Weekly</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>Category</label>
+            <select id="alert-cat">
+              <option value="">All categories</option>
+              <option>Labels and Publishing</option>
+              <option>Sync and Licensing</option>
+              <option>Live and Touring</option>
+              <option>Streaming and Tech</option>
+              <option>Management</option>
+              <option>Marketing and PR</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Experience level</label>
+            <select id="alert-level">
+              <option value="">Any level</option>
+              <option value="entry">Entry level (0 to 2 yrs)</option>
+              <option value="mid">Mid level (2 to 5 yrs)</option>
+              <option value="senior">Senior (5 to 10 yrs)</option>
+              <option value="director">Director / Head of</option>
+            </select>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label>Work arrangement</label>
+            <select id="alert-work">
+              <option value="">Any arrangement</option>
+              <option value="onsite">On-site</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="remote">Remote</option>
+              <option value="touring">On tour</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div style="display:flex;flex-direction:column;height:100%;">
+          <div class="field">
+            <label>Contract type</label>
+            <select id="alert-contract">
+              <option value="">Any contract</option>
+              <option value="permanent">Permanent</option>
+              <option value="freelance">Freelance / contract</option>
+              <option value="parttime">Part-time</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Minimum salary</label>
+            <div style="display:flex;gap:6px;align-items:center;">
+              <select id="alert-currency" style="border:1px solid rgba(123,45,66,.22);border-radius:8px;padding:9px 8px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);background:white;outline:none;-webkit-appearance:none;flex-shrink:0;">
+                <option>GBP £</option><option>USD $</option><option>EUR €</option><option>AUD A$</option><option>CAD C$</option>
+              </select>
+              <input type="text" id="alert-salary" placeholder="e.g. 30,000" style="flex:1;border:1px solid rgba(123,45,66,.22);border-radius:8px;padding:9px 12px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;min-width:0;"/>
+            </div>
+          </div>
+          <div class="field">
+            <label>City</label>
+            <input type="text" id="alert-loc" placeholder="e.g. London, New York, Remote"/>
+          </div>
+          <div class="field">
+            <label>Keywords</label>
+            <input type="text" id="alert-keywords" placeholder="e.g. A&R, sync, marketing"/>
+            <div style="font-size:12px;color:#bbb;margin-top:4px;">Matched against job titles and descriptions.</div>
+          </div>
+          <div style="margin-top:auto;padding-top:1rem;text-align:right;">
+            <button class="modal-submit" onclick="submitAlerts()" style="width:auto;padding:12px 32px;">Subscribe to alerts</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div id="alerts-success-view" class="modal-success" style="display:none;">
+      <div style="font-size:36px;color:var(--sangria-light);margin-bottom:1rem;">♪</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--sangria-dark);margin-bottom:.5rem;">You are subscribed!</h2>
+      <p>We will send matching roles to your inbox. Unsubscribe any time.</p>
+      <button class="back-link" style="margin-top:1.25rem;" onclick="closeAlerts()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="logo" onclick="showPage('browse')">
+      <div class="logo-text">Spin<span>Chirp</span></div>
+    </div>
+    <ul class="nav-main-links">
+      <li><a onclick="showPage('browse')">Browse jobs</a></li>
+      <li><a onclick="showPage('companies')">Companies</a></li>
+      <li><a onclick="openAlerts()" class="btn-alerts">Job alerts</a></li>
+    </ul>
+  </div>
+  <ul class="nav-right">
+    <li><a id="nav-login" onclick="showPage('login')" class="btn-login">Log in</a></li>
+    <li><a id="nav-signup" onclick="showPage('signup')" class="btn-signup">Sign up</a></li>
+    <li id="nav-profile" style="display:none;cursor:pointer;" onclick="showPage('profile')">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div id="nav-avatar" style="width:32px;height:32px;border-radius:50%;background:var(--sangria-mid);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white;font-family:'DM Sans',sans-serif;"></div>
+        <span id="nav-name" style="font-size:14px;color:rgba(250,245,240,.85);"></span>
+      </div>
+    </li>
+    <li><a id="nav-logout" onclick="doLogout()" style="display:none;font-size:13px;color:rgba(250,245,240,.5);cursor:pointer;">Sign out</a></li>
+    <li><a onclick="showPage('post')" class="btn-post">Post a role</a></li>
+  </ul>
+</nav>
+
+<!-- ===== BROWSE PAGE ===== -->
+<div id="page-browse" class="page active">
+  <section class="hero">
+    <div class="hero-rule"></div>
+    <!-- Dim base vinyl (always visible, subdued) -->
+    <div class="hero-vinyl-wrap">
+      <div class="hero-vinyl-dim">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="198" fill="#5C1F30"/>
+        <circle cx="200" cy="200" r="192" stroke="#7B2D42" stroke-width="1.5" fill="none"/>
+        <circle cx="200" cy="200" r="184" stroke="#3D1020" stroke-width="3" fill="none"/>
+        <circle cx="200" cy="200" r="176" stroke="#7B2D42" stroke-width="1" fill="none"/>
+        <circle cx="200" cy="200" r="168" stroke="#3D1020" stroke-width="2.5" fill="none"/>
+        <circle cx="200" cy="200" r="160" stroke="#7B2D42" stroke-width="1" fill="none"/>
+        <circle cx="200" cy="200" r="152" stroke="#3D1020" stroke-width="2.5" fill="none"/>
+        <circle cx="200" cy="200" r="144" stroke="#7B2D42" stroke-width="1" fill="none"/>
+        <circle cx="200" cy="200" r="136" stroke="#3D1020" stroke-width="2" fill="none"/>
+        <circle cx="200" cy="200" r="128" stroke="#7B2D42" stroke-width="1" fill="none"/>
+        <circle cx="200" cy="200" r="120" stroke="#3D1020" stroke-width="2" fill="none"/>
+        <circle cx="200" cy="200" r="112" fill="#3D1020"/>
+        <circle cx="200" cy="200" r="88" fill="#3D1020"/>
+        <circle cx="200" cy="200" r="72" fill="#7B2D42"/>
+        <circle cx="200" cy="200" r="56" fill="#5C1F30"/>
+        <!-- Asymmetric label arc so rotation is visible -->
+        <circle cx="200" cy="200" r="26" fill="#3D1020"/>
+        <circle cx="200" cy="200" r="7" fill="#3D1020"/>
+      </svg>
+      </div>
+      <!-- Bright vinyl revealed only through the ray mask (static mask, vinyl spins under it) -->
+      <div class="hero-vinyl-bright">
+            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="198" fill="#7B2D42"/>
+        <circle cx="200" cy="200" r="192" stroke="#C4748A" stroke-width="1.5" fill="none"/>
+        <circle cx="200" cy="200" r="184" stroke="#5C1F30" stroke-width="3" fill="none"/>
+        <circle cx="200" cy="200" r="176" stroke="#C4748A" stroke-width="1" fill="none"/>
+        <circle cx="200" cy="200" r="168" stroke="#5C1F30" stroke-width="2.5" fill="none"/>
+        <circle cx="200" cy="200" r="160" stroke="#C4748A" stroke-width="1" fill="none"/>
+        <circle cx="200" cy="200" r="152" stroke="#5C1F30" stroke-width="2.5" fill="none"/>
+        <circle cx="200" cy="200" r="144" stroke="#C4748A" stroke-width="1" fill="none"/>
+        <circle cx="200" cy="200" r="136" stroke="#5C1F30" stroke-width="2" fill="none"/>
+        <circle cx="200" cy="200" r="128" stroke="#C4748A" stroke-width="1" fill="none"/>
+        <circle cx="200" cy="200" r="120" stroke="#5C1F30" stroke-width="2" fill="none"/>
+        <circle cx="200" cy="200" r="112" fill="#5C1F30"/>
+        <circle cx="200" cy="200" r="88" fill="#5C1F30"/>
+        <circle cx="200" cy="200" r="72" fill="#9E3D55"/>
+        <circle cx="200" cy="200" r="56" fill="#7B2D42"/>
+        <!-- no asymmetric arc -->
+        <circle cx="200" cy="200" r="26" fill="#5C1F30"/>
+        <circle cx="200" cy="200" r="7" fill="#5C1F30"/>
+      </svg>
+      </div>
+    </div>
+    <div class="hero-inner">
+      <h1>Find your next <span class="pink">job</span><br>in the music industry</h1>
+      <p class="hero-sub">Roles at labels, publishers, agencies, streaming platforms, and studios worldwide.</p>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="A&R, sync, marketing, touring..." oninput="applyFilters()"/>
+        <button onclick="applyFilters()">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num" id="stat-live">12</span><span class="stat-label">Live roles</span></div>
+    <div class="stat"><span class="stat-num">91</span><span class="stat-label">Companies hiring</span></div>
+    <div class="stat"><span class="stat-num">62%</span><span class="stat-label">Remote or hybrid</span></div>
+    <div class="stat"><span class="stat-num">Free</span><span class="stat-label">For job seekers</span></div>
+  </div>
+
+  <div class="filter-panel">
+    <div class="filter-panel-inner">
+      <div class="filter-row">
+        <span class="filter-row-label">Category</span>
+        <div class="pill-group" id="cat-pills">
+          <button class="fpill active" data-cat="all">All</button>
+          <button class="fpill" data-cat="labels">Labels and Publishing</button>
+          <button class="fpill" data-cat="sync">Sync and Licensing</button>
+          <button class="fpill" data-cat="live">Live and Touring</button>
+          <button class="fpill" data-cat="streaming">Streaming and Tech</button>
+          <button class="fpill" data-cat="management">Management</button>
+          <button class="fpill" data-cat="marketing">Marketing and PR</button>
+        </div>
+      </div>
+      <div class="filter-row">
+        <span class="filter-row-label">Experience</span>
+        <div class="pill-group">
+          <button class="fpill" data-filter="level" data-value="entry">Entry level</button>
+          <button class="fpill" data-filter="level" data-value="mid">Mid level</button>
+          <button class="fpill" data-filter="level" data-value="senior">Senior</button>
+          <button class="fpill" data-filter="level" data-value="director">Director / Head</button>
+        </div>
+      </div>
+      <div class="filter-row">
+        <span class="filter-row-label">Work type</span>
+        <div class="pill-group">
+          <button class="fpill" data-filter="work" data-value="onsite">On-site</button>
+          <button class="fpill" data-filter="work" data-value="hybrid">Hybrid</button>
+          <button class="fpill" data-filter="work" data-value="remote">Remote</button>
+          <button class="fpill" data-filter="work" data-value="touring">On tour</button>
+        </div>
+        <div class="pill-group" style="margin-left:.75rem;">
+          <button class="fpill" data-filter="contract" data-value="permanent">Permanent</button>
+          <button class="fpill" data-filter="contract" data-value="freelance">Freelance</button>
+          <button class="fpill" data-filter="contract" data-value="parttime">Part-time</button>
+        </div>
+      </div>
+      <div class="filter-row">
+        <span class="filter-row-label">Min salary</span>
+        <div class="salary-row">
+          <select class="salary-currency" id="salary-currency" onchange="applyFilters()">
+            <option value="GBP">GBP £</option>
+            <option value="USD">USD $</option>
+            <option value="EUR">EUR €</option>
+            <option value="AUD">AUD A$</option>
+            <option value="CAD">CAD C$</option>
+          </select>
+          <div class="sal-input-wrap">
+            <input type="text" id="salary-text" placeholder="20,000" oninput="syncSalaryFromText(this)"/>
+            <span>per yr</span>
+          </div>
+          <input type="range" class="sal-range" id="salary-range" min="0" max="200" value="20" step="1" oninput="syncSalaryFromSlider(this.value)"/>
+          <select class="sal-timeframe" id="sal-timeframe" onchange="applyFilters()">
+            <option value="year">per year</option>
+            <option value="day">per day</option>
+            <option value="hour">per hour</option>
+          </select>
+          <button class="fpill" id="no-min-btn" onclick="clearSalary()">No minimum</button>
+        </div>
+      </div>
+      <div class="filter-row">
+        <span class="filter-row-label">City</span>
+        <div class="city-wrap">
+          <input type="text" class="city-search-input" id="city-search" placeholder="Search cities..." autocomplete="off" oninput="filterCities(this.value)" onfocus="openDropdown()" onblur="closeDropdown()"/>
+          <div class="city-dropdown" id="city-dropdown"></div>
+        </div>
+        <div class="city-tags" id="city-tags"></div>
+        <button class="clear-all-btn" onclick="clearAll()">Clear all</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-wrap">
+    <!-- SAVED JOBS PANEL -->
+    <div class="saved-panel" id="saved-panel">
+      <div class="saved-panel-title">
+        <span>Saved jobs</span>
+        <button onclick="clearSavedJobs()">Clear all saved</button>
+      </div>
+      <div class="saved-chips" id="saved-chips"></div>
+    </div>
+
+    <div class="section-head">
+      <h2>Latest roles</h2>
+      <span id="results-count">12 open positions</span>
+    </div>
+
+    <div class="jobs" id="jobs-list">
+
+      <div class="job-card featured" data-id="j1"
+        data-cat="labels" data-level="entry" data-salary="28000" data-work="hybrid"
+        data-contract="permanent" data-city="london" data-title="ar coordinator emerging artists warner"
+        data-company="Warner Music UK" data-deadline="2026-06-15" onclick="openJob('j1')">
+        <div class="job-logo" style="background:#F5E8EC;color:#7B2D42;">WM</div>
+        <div>
+          <div class="job-title">A&R Coordinator, Emerging Artists</div>
+          <div class="job-meta">Warner Music UK <span class="dot">·</span> London <span class="dot">·</span> £28,000 to £34,000</div>
+          <div class="job-deadline" id="dl-j1"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-featured">Featured</div>
+          <div class="job-date">Today</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j1','A&R Coordinator, Emerging Artists')" id="save-j1" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j2"
+        data-cat="sync" data-level="senior" data-salary="55000" data-work="remote"
+        data-contract="permanent" data-city="worldwide" data-title="head sync licensing spotify"
+        data-company="Spotify" data-deadline="2026-06-20" onclick="openJob('j2')">
+        <div class="job-logo" style="background:#E8F5E9;color:#2E7D32;">SP</div>
+        <div>
+          <div class="job-title">Head of Sync Licensing</div>
+          <div class="job-meta">Spotify <span class="dot">·</span> Worldwide remote <span class="dot">·</span> £55,000 to £70,000</div>
+          <div class="job-deadline" id="dl-j2"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-remote">Remote</div>
+          <div class="job-date">1d ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j2','Head of Sync Licensing')" id="save-j2" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j3"
+        data-cat="labels" data-level="director" data-salary="45000" data-work="hybrid"
+        data-contract="permanent" data-city="london" data-title="creative director publishing bmg"
+        data-company="BMG Rights" data-deadline="2026-06-10" onclick="openJob('j3')">
+        <div class="job-logo" style="background:#E3F2FD;color:#1565C0;">BMG</div>
+        <div>
+          <div class="job-title">Creative Director, Publishing</div>
+          <div class="job-meta">BMG Rights <span class="dot">·</span> London <span class="dot">·</span> £45,000 to £55,000</div>
+          <div class="job-deadline" id="dl-j3"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-hybrid">Hybrid</div>
+          <div class="job-date">2d ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j3','Creative Director, Publishing')" id="save-j3" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j4"
+        data-cat="live" data-level="mid" data-salary="38000" data-work="touring"
+        data-contract="permanent" data-city="touring" data-title="tour manager international invisible dot"
+        data-company="Invisible Dot" data-deadline="2026-07-01" onclick="openJob('j4')">
+        <div class="job-logo" style="background:#FFF3E0;color:#BF360C;">IV</div>
+        <div>
+          <div class="job-title">Tour Manager, International</div>
+          <div class="job-meta">Invisible Dot <span class="dot">·</span> On tour <span class="dot">·</span> £38,000 to £48,000</div>
+          <div class="job-deadline" id="dl-j4"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-onsite">On tour</div>
+          <div class="job-date">3d ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j4','Tour Manager, International')" id="save-j4" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j5"
+        data-cat="marketing" data-level="mid" data-salary="40000" data-work="hybrid"
+        data-contract="permanent" data-city="london" data-title="label marketing manager universal music"
+        data-company="Universal Music Group" data-deadline="2026-06-28" onclick="openJob('j5')">
+        <div class="job-logo" style="background:#F5E8EC;color:#7B2D42;">UMG</div>
+        <div>
+          <div class="job-title">Label Marketing Manager</div>
+          <div class="job-meta">Universal Music Group <span class="dot">·</span> London <span class="dot">·</span> £40,000 to £50,000</div>
+          <div class="job-deadline" id="dl-j5"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-hybrid">Hybrid</div>
+          <div class="job-date">4d ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j5','Label Marketing Manager')" id="save-j5" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j6"
+        data-cat="marketing" data-level="director" data-salary="50000" data-work="hybrid"
+        data-contract="permanent" data-city="london" data-title="editorial director nme networks"
+        data-company="NME Networks" data-deadline="2026-06-05" onclick="openJob('j6')">
+        <div class="job-logo" style="background:#F3E5F5;color:#6A1B9A;">NME</div>
+        <div>
+          <div class="job-title">Editorial Director</div>
+          <div class="job-meta">NME Networks <span class="dot">·</span> London <span class="dot">·</span> £50,000 to £65,000</div>
+          <div class="job-deadline" id="dl-j6"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-hybrid">Hybrid</div>
+          <div class="job-date">5d ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j6','Editorial Director')" id="save-j6" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j7"
+        data-cat="streaming" data-level="senior" data-salary="70000" data-work="remote"
+        data-contract="permanent" data-city="new york" data-title="product manager music discovery apple"
+        data-company="Apple Music" data-deadline="2026-07-10" onclick="openJob('j7')">
+        <div class="job-logo" style="background:#E3F2FD;color:#1565C0;">AP</div>
+        <div>
+          <div class="job-title">Product Manager, Music Discovery</div>
+          <div class="job-meta">Apple Music <span class="dot">·</span> New York <span class="dot">·</span> $70,000 to $85,000</div>
+          <div class="job-deadline" id="dl-j7"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-remote">Remote</div>
+          <div class="job-date">6d ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j7','Product Manager, Music Discovery')" id="save-j7" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j8"
+        data-cat="management" data-level="mid" data-salary="30000" data-work="onsite"
+        data-contract="freelance" data-city="london" data-title="artist manager assistant sco talent"
+        data-company="Sco Talent" data-deadline="2026-06-18" onclick="openJob('j8')">
+        <div class="job-logo" style="background:#E8F5E9;color:#1B5E20;">SC</div>
+        <div>
+          <div class="job-title">Artist Manager Assistant</div>
+          <div class="job-meta">Sco Talent <span class="dot">·</span> London <span class="dot">·</span> £30,000 to £40,000</div>
+          <div class="job-deadline" id="dl-j8"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-onsite">On-site</div>
+          <div class="job-date">1w ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j8','Artist Manager Assistant')" id="save-j8" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j9"
+        data-cat="sync" data-level="entry" data-salary="24000" data-work="hybrid"
+        data-contract="permanent" data-city="london" data-title="sync coordinator prs music"
+        data-company="PRS for Music" data-deadline="2026-06-25" onclick="openJob('j9')">
+        <div class="job-logo" style="background:#FFF3E0;color:#BF360C;">PRS</div>
+        <div>
+          <div class="job-title">Sync Coordinator</div>
+          <div class="job-meta">PRS for Music <span class="dot">·</span> London <span class="dot">·</span> £24,000 to £28,000</div>
+          <div class="job-deadline" id="dl-j9"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-hybrid">Hybrid</div>
+          <div class="job-date">1w ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j9','Sync Coordinator')" id="save-j9" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j10"
+        data-cat="live" data-level="entry" data-salary="22000" data-work="onsite"
+        data-contract="parttime" data-city="manchester" data-title="events coordinator ao arena manchester"
+        data-company="AO Arena" data-deadline="2026-05-30" onclick="openJob('j10')">
+        <div class="job-logo" style="background:#F5E8EC;color:#7B2D42;">AO</div>
+        <div>
+          <div class="job-title">Events Coordinator</div>
+          <div class="job-meta">AO Arena <span class="dot">·</span> Manchester <span class="dot">·</span> £22,000 to £26,000</div>
+          <div class="job-deadline" id="dl-j10"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-onsite">On-site</div>
+          <div class="job-date">1w ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j10','Events Coordinator')" id="save-j10" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j11"
+        data-cat="streaming" data-level="mid" data-salary="42000" data-work="remote"
+        data-contract="freelance" data-city="worldwide" data-title="data analyst streaming royalties musicdata"
+        data-company="MusicData Co" data-deadline="2026-07-05" onclick="openJob('j11')">
+        <div class="job-logo" style="background:#E8F5E9;color:#2E7D32;">MD</div>
+        <div>
+          <div class="job-title">Data Analyst, Streaming and Royalties</div>
+          <div class="job-meta">MusicData Co <span class="dot">·</span> Worldwide remote <span class="dot">·</span> £42,000 to £55,000</div>
+          <div class="job-deadline" id="dl-j11"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-remote">Remote</div>
+          <div class="job-date">2w ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j11','Data Analyst, Streaming and Royalties')" id="save-j11" title="Save job">Save</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-id="j12"
+        data-cat="labels" data-level="senior" data-salary="55000" data-work="hybrid"
+        data-contract="permanent" data-city="berlin" data-title="head ar strategy sony music berlin"
+        data-company="Sony Music" data-deadline="2026-07-15" onclick="openJob('j12')">
+        <div class="job-logo" style="background:#F5E8EC;color:#7B2D42;">SM</div>
+        <div>
+          <div class="job-title">Head of A&R Strategy</div>
+          <div class="job-meta">Sony Music <span class="dot">·</span> Berlin <span class="dot">·</span> EUR 55,000 to EUR 65,000</div>
+          <div class="job-deadline" id="dl-j12"></div>
+        </div>
+        <div class="job-right">
+          <div class="tag tag-hybrid">Hybrid</div>
+          <div class="job-date">2w ago</div>
+          <button class="save-btn" onclick="event.stopPropagation();toggleSave('j12','Head of A&R Strategy')" id="save-j12" title="Save job">Save</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="no-results" id="no-results">
+      <span>No matches found</span>
+      Try adjusting your filters, or <button onclick="clearAll()" style="background:none;border:none;color:var(--sangria-mid);cursor:pointer;font-size:15px;font-family:'DM Sans',sans-serif;text-decoration:underline;">clear them all</button>
+    </div>
+
+    <div class="cta">
+      <h3>Hiring music talent?</h3>
+      <p>Post a role for free and reach music industry professionals worldwide.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="showPage('post')">Post a role, free</button>
+        <button class="btn-secondary" onclick="openAlerts()">Get job alerts</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Spin<span>Chirp</span></div>
+    <nav class="footer-links">
+      <a onclick="showPage('browse')">Browse jobs</a>
+      <a onclick="showPage('companies')">Companies</a>
+      <a onclick="showPage('post')">Post a job</a>
+      <a href="#">Privacy</a>
+    </nav>
+    <p class="footer-copy">© 2026 SpinChirp. Free for job seekers, always.</p>
+  </footer>
+</div>
+
+<!-- ===== JOB DETAIL PAGE ===== -->
+<div id="page-job" class="page">
+  <div id="job-detail-content"></div>
+  <footer>
+    <div class="footer-logo">Spin<span>Chirp</span></div>
+    <nav class="footer-links">
+      <a onclick="showPage('browse')">Browse jobs</a>
+      <a onclick="showPage('post')">Post a job</a>
+      <a href="#">Privacy</a>
+    </nav>
+    <p class="footer-copy">© 2026 SpinChirp. Free for job seekers, always.</p>
+  </footer>
+</div>
+
+<!-- ===== COMPANIES PAGE ===== -->
+<div id="page-companies" class="page">
+  <div class="page-header">
+    <p class="eyebrow">Employers on SpinChirp</p>
+    <h1>Music companies <span class="pink">hiring now</span></h1>
+    <p>Browse all companies actively recruiting on SpinChirp.</p>
+  </div>
+  <div class="main-wrap">
+    <div class="companies-grid" id="companies-grid"></div>
+  </div>
+  <footer>
+    <div class="footer-logo">Spin<span>Chirp</span></div>
+    <nav class="footer-links">
+      <a onclick="showPage('browse')">Browse jobs</a>
+      <a onclick="showPage('post')">Post a job</a>
+      <a href="#">Privacy</a>
+    </nav>
+    <p class="footer-copy">© 2026 SpinChirp. Free for job seekers, always.</p>
+  </footer>
+</div>
+
+<!-- ===== COMPANY PROFILE PAGE ===== -->
+<div id="page-company-profile" class="page">
+  <div id="company-profile-content"></div>
+  <footer>
+    <div class="footer-logo">Spin<span>Chirp</span></div>
+    <nav class="footer-links">
+      <a onclick="showPage('browse')">Browse jobs</a>
+      <a onclick="showPage('companies')">Companies</a>
+      <a onclick="showPage('post')">Post a job</a>
+    </nav>
+    <p class="footer-copy">© 2026 SpinChirp. Free for job seekers, always.</p>
+  </footer>
+</div>
+
+
+<div id="page-post" class="page">
+  <div class="page-header">
+    <p class="eyebrow">For employers</p>
+    <h1>Post a role, find your <span class="pink">next hire</span></h1>
+    <p>Reach music industry professionals worldwide.</p>
+    <div class="free-badge">Free to post, no credit card needed</div>
+  </div>
+  <div class="form-wrap">
+    <div class="success-screen" id="success-screen">
+      <div style="margin:0 auto 2rem;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="animation:vinylspin 4s linear infinite;display:block;margin:0 auto;">
+          <circle cx="40" cy="40" r="38" fill="#3D1020" stroke="#9E3D55" stroke-width="2"/>
+          <circle cx="40" cy="40" r="26" fill="#5C1F30"/>
+          <circle cx="40" cy="40" r="15" fill="#3D1020"/>
+          <circle cx="40" cy="40" r="6" fill="#7B2D42"/>
+          <circle cx="40" cy="40" r="3" fill="#C4748A"/>
+        </svg>
+      </div>
+      <h2>Role posted!</h2>
+      <p>Your listing is live on SpinChirp. We will let you know when candidates apply. Listings expire after 30 days unless renewed.</p>
+      <button class="back-link" onclick="showPage('browse')">Browse all roles</button>
+    </div>
+    <div id="post-form">
+      <div class="form-section">
+        <div class="form-section-title">Company details</div>
+        <div class="form-section-sub">Tell candidates who they would be working for</div>
+        <div class="field-row">
+          <div class="field"><label>Company name <span class="req">*</span></label><input type="text" id="f-company" placeholder="e.g. Warner Music UK" oninput="updatePreview()"/></div>
+          <div class="field"><label>Company website</label><input type="url" placeholder="https://yourcompany.com"/></div>
+        </div>
+        <div class="field">
+          <label>Company logo</label>
+          <div class="upload-zone" onclick="document.getElementById('logo-input').click()">
+            <div class="uz-icon" style="font-size:28px;margin-bottom:8px;">♪</div>
+            <div class="uz-label">Click to upload your logo</div>
+            <div class="uz-sub">PNG or JPG, square preferred, max 2MB</div>
+            <input type="file" id="logo-input" accept="image/*" onchange="handleLogo(this)"/>
+          </div>
+        </div>
+        <div class="field"><label>Company size</label><select><option value="">Select size...</option><option>1 to 10 employees</option><option>11 to 50 employees</option><option>51 to 200 employees</option><option>201 to 500 employees</option><option>500+ employees</option></select></div>
+        <div class="field"><label>Short company description</label><textarea placeholder="A sentence or two about what your company does..." style="min-height:80px;"></textarea></div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">Role details</div>
+        <div class="form-section-sub">The essentials candidates need to know</div>
+        <div class="field"><label>Job title <span class="req">*</span></label><input type="text" id="f-title" placeholder="e.g. A&R Coordinator" oninput="updatePreview()"/></div>
+        <div class="field"><label>Sector <span class="req">*</span></label>
+          <div class="tag-select">
+            <span class="ts-opt" onclick="toggleTag(this)">Labels and Publishing</span>
+            <span class="ts-opt" onclick="toggleTag(this)">Sync and Licensing</span>
+            <span class="ts-opt" onclick="toggleTag(this)">Live and Touring</span>
+            <span class="ts-opt" onclick="toggleTag(this)">Streaming and Tech</span>
+            <span class="ts-opt" onclick="toggleTag(this)">Artist Management</span>
+            <span class="ts-opt" onclick="toggleTag(this)">Marketing and PR</span>
+            <span class="ts-opt" onclick="toggleTag(this)">Radio and Media</span>
+            <span class="ts-opt" onclick="toggleTag(this)">Production and Studio</span>
+          </div>
+        </div>
+        <div class="form-section-divider"></div>
+        <div class="field-row">
+          <div class="field"><label>Experience level <span class="req">*</span></label><select id="f-level" onchange="updatePreview()"><option value="">Select level...</option><option>Entry level (0 to 2 yrs)</option><option>Mid level (2 to 5 yrs)</option><option>Senior (5 to 10 yrs)</option><option>Director / Head of</option></select></div>
+          <div class="field"><label>Contract type <span class="req">*</span></label><select><option value="">Select type...</option><option>Permanent</option><option>Freelance / contract</option><option>Part-time</option><option>Internship</option></select></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Work arrangement <span class="req">*</span></label><select id="f-work" onchange="updatePreview()"><option value="">Select...</option><option>On-site</option><option>Hybrid</option><option>Remote</option><option>On tour</option></select></div>
+          <div class="field"><label>City / location <span class="req">*</span></label><input type="text" id="f-city" placeholder="e.g. London, New York, Remote" oninput="updatePreview()"/></div>
+        </div>
+        <div class="form-section-divider"></div>
+        <div class="field"><label>Salary range</label>
+          <div class="salary-fields">
+            <select id="f-sal-currency" style="width:90px;" onchange="updatePreview()"><option>GBP £</option><option>USD $</option><option>EUR €</option><option>AUD A$</option><option>CAD C$</option></select>
+            <input type="text" id="f-sal-low" placeholder="30,000" oninput="updatePreview()"/>
+            <div class="sep">to</div>
+            <input type="text" id="f-sal-high" placeholder="40,000" oninput="updatePreview()"/>
+          </div>
+          <div class="hint">Leave blank if you prefer not to disclose. Roles with salary listed get 3x more applications.</div>
+        </div>
+        <div class="field"><label>Application deadline <span class="req">*</span></label><input type="date" id="f-deadline"/><div class="hint">Listings automatically expire 30 days after posting if no deadline is set.</div></div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">Job description</div>
+        <div class="form-section-sub">Give candidates a full picture of the role</div>
+        <div class="field"><label>About the role <span class="req">*</span></label><textarea placeholder="Describe the day-to-day responsibilities, what success looks like, and what makes this role exciting..." style="min-height:160px;"></textarea></div>
+        <div class="field"><label>What we are looking for</label><textarea placeholder="Skills, experience, and qualities you are seeking..." style="min-height:120px;"></textarea></div>
+        <div class="field"><label>What we offer</label><textarea placeholder="Benefits, culture, perks, growth opportunities..." style="min-height:100px;"></textarea></div>
+        <div class="field"><label>How to apply</label><input type="text" id="f-apply-url" placeholder="Link to application form, or email address"/><div class="hint">Candidates will be directed here when they click Apply.</div></div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">Your contact details</div>
+        <div class="form-section-sub">So we can reach you, not shown publicly</div>
+        <div class="field-row">
+          <div class="field"><label>Your name <span class="req">*</span></label><input type="text" placeholder="Full name"/></div>
+          <div class="field"><label>Your email <span class="req">*</span></label><input type="email" placeholder="you@company.com"/></div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">Preview</div>
+        <div class="form-section-sub">How your listing will appear on SpinChirp</div>
+        <div class="preview-card">
+          <div class="preview-logo" id="preview-logo">?</div>
+          <div>
+            <div class="preview-title" id="preview-title">Your job title</div>
+            <div class="preview-meta" id="preview-meta">Company · Location · Salary</div>
+          </div>
+          <div><div class="preview-tag" id="preview-tag">Role type</div></div>
+        </div>
+      </div>
+      <div class="submit-section">
+        <button class="submit-btn" onclick="submitForm()">Post this role</button>
+        <div class="submit-note">Free to post. No payment needed. Listings expire after 30 days.</div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">Spin<span>Chirp</span></div>
+    <nav class="footer-links">
+      <a onclick="showPage('browse')">Browse jobs</a>
+      <a onclick="showPage('post')">Post a job</a>
+      <a href="#">Privacy</a>
+    </nav>
+    <p class="footer-copy">© 2026 SpinChirp. Free for job seekers, always.</p>
+  </footer>
+</div>
+
+<!-- ===== LOGIN PAGE ===== -->
+<div id="page-login" class="page">
+  <div style="min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;padding:2rem;background:var(--cream);">
+    <div style="width:100%;max-width:420px;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <div class="logo" style="justify-content:center;margin-bottom:1rem;" onclick="showPage('browse')">
+          
+          <div class="logo-text" style="color:var(--sangria-deep);">Spin<span>Chirp</span></div>
+        </div>
+        <h1 style="font-family:'Playfair Display',serif;font-size:26px;color:var(--sangria-dark);margin-bottom:.25rem;">Welcome back</h1>
+        <p style="font-size:14px;color:#aaa;">Log in to access saved jobs and alerts</p>
+      </div>
+      <div style="background:white;border:1px solid rgba(123,45,66,.12);border-radius:16px;padding:2rem;">
+        <div class="field"><label>Email address</label><input id="li-email" type="email" placeholder="you@example.com" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+        <div class="field"><label>Password</label><input id="li-password" type="password" placeholder="Your password" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+        <div style="text-align:right;margin-bottom:1rem;"><a onclick="showPage('reset')" style="font-size:13px;color:var(--sangria-mid);cursor:pointer;">Forgot password?</a></div>
+        <div id="login-error" style="font-size:13px;margin-bottom:.75rem;min-height:1.2em;"></div>
+        <button id="btn-login-submit" data-label="Log in" onclick="doLogin()" style="width:100%;background:var(--sangria);color:var(--cream);border:none;padding:13px;border-radius:100px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;">Log in</button>
+        <div style="text-align:center;margin-top:1.25rem;font-size:14px;color:#888;">Don't have an account? <a onclick="showPage('signup')" style="color:var(--sangria-mid);cursor:pointer;font-weight:500;">Sign up</a></div>
+      </div>
+      <div style="text-align:center;margin-top:1.5rem;"><a onclick="showPage('browse')" style="font-size:13px;color:#bbb;cursor:pointer;">Back to jobs</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SIGNUP PAGE ===== -->
+<div id="page-signup" class="page">
+  <div style="min-height:calc(100vh - 64px);display:flex;align-items:flex-start;justify-content:center;padding:3rem 2rem;background:var(--cream);">
+    <div style="width:100%;max-width:480px;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <div class="logo" style="justify-content:center;margin-bottom:1rem;" onclick="showPage('browse')">
+          
+          <div class="logo-text" style="color:var(--sangria-deep);">Spin<span>Chirp</span></div>
+        </div>
+        <h1 style="font-family:'Playfair Display',serif;font-size:26px;color:var(--sangria-dark);margin-bottom:.25rem;">Create your account</h1>
+        <p style="font-size:14px;color:#aaa;">Free for job seekers, always</p>
+      </div>
+      <div style="background:white;border:1px solid rgba(123,45,66,.12);border-radius:16px;padding:2rem;">
+        <div id="signup-form-inner">
+          <div style="display:flex;gap:8px;margin-bottom:1.25rem;">
+            <button id="signup-seeker" onclick="setSignupType('seeker')" style="flex:1;padding:10px;border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;border:2px solid var(--sangria);background:var(--sangria-pale);color:var(--sangria-dark);font-weight:500;">Job seeker</button>
+            <button id="signup-employer" onclick="setSignupType('employer')" style="flex:1;padding:10px;border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid rgba(123,45,66,.2);background:transparent;color:#888;">Employer</button>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>First name</label><input id="su-firstname" type="text" placeholder="Jane"/></div>
+            <div class="field"><label>Last name</label><input id="su-lastname" type="text" placeholder="Smith"/></div>
+          </div>
+          <div class="field"><label>Email address</label><input id="su-email" type="email" placeholder="you@example.com"/></div>
+          <div class="field"><label>Password</label><input id="su-password" type="password" placeholder="At least 8 characters"/></div>
+          <div id="seeker-fields">
+            <div class="field"><label>What sector are you in?</label>
+              <select id="su-sector"><option value="">Select...</option><option>Labels and Publishing</option><option>Sync and Licensing</option><option>Live and Touring</option><option>Streaming and Tech</option><option>Artist Management</option><option>Marketing and PR</option><option>Radio and Media</option><option>Production and Studio</option></select>
+            </div>
+            <div class="field"><label>Current location</label><input id="su-location" type="text" placeholder="e.g. London"/></div>
+            <div class="field"><label>Years of experience</label>
+              <select id="su-years"><option value="">Select...</option><option>0 to 1 year</option><option>1 to 3 years</option><option>3 to 5 years</option><option>5 to 10 years</option><option>10+ years</option></select>
+            </div>
+          </div>
+          <div id="employer-fields" style="display:none;">
+            <div class="field"><label>Company name</label><input id="su-company" type="text" placeholder="e.g. Warner Music UK"/></div>
+            <div class="field"><label>Your role</label><input id="su-roletitle" type="text" placeholder="e.g. HR Manager"/></div>
+          </div>
+          <div id="signup-error" style="font-size:13px;margin-bottom:.75rem;min-height:1.2em;"></div>
+          <button id="btn-signup-submit" data-label="Create account" onclick="doSignup()" style="width:100%;background:var(--sangria);color:var(--cream);border:none;padding:13px;border-radius:100px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:.25rem;">Create account</button>
+          <p style="font-size:12px;color:#bbb;text-align:center;margin-top:1rem;line-height:1.5;">By signing up you agree to our Terms of Service and Privacy Policy</p>
+          <div style="text-align:center;margin-top:1rem;font-size:14px;color:#888;">Already have an account? <a onclick="showPage('login')" style="color:var(--sangria-mid);cursor:pointer;font-weight:500;">Log in</a></div>
+        </div>
+        <div id="signup-success" style="display:none;text-align:center;padding:1rem 0;">
+          <div style="font-size:32px;margin-bottom:1rem;">♪</div>
+          <h2 style="font-family:'Playfair Display',serif;font-size:22px;color:var(--sangria-dark);margin-bottom:.5rem;">Account created!</h2>
+          <p style="font-size:14px;color:#888;line-height:1.6;margin-bottom:1.5rem;">Check your inbox and click the confirmation link, then log in.</p>
+          <button onclick="showPage('login')" style="background:var(--sangria);color:var(--cream);border:none;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;">Go to log in</button>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:1.5rem;"><a onclick="showPage('browse')" style="font-size:13px;color:#bbb;cursor:pointer;">Back to jobs</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RESET PASSWORD PAGE ===== -->
+<div id="page-reset" class="page">
+  <div style="min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;padding:2rem;background:var(--cream);">
+    <div style="width:100%;max-width:420px;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <h1 style="font-family:'Playfair Display',serif;font-size:26px;color:var(--sangria-dark);margin-bottom:.25rem;">Reset your password</h1>
+        <p style="font-size:14px;color:#aaa;">We will send you a link to reset it</p>
+      </div>
+      <div style="background:white;border:1px solid rgba(123,45,66,.12);border-radius:16px;padding:2rem;">
+        <div id="reset-form-inner">
+          <div class="field"><label>Email address</label><input id="reset-email" type="email" placeholder="you@example.com" onkeydown="if(event.key==='Enter')doResetPassword()"/></div>
+          <div id="reset-error" style="font-size:13px;margin-bottom:.75rem;min-height:1.2em;"></div>
+          <button id="btn-reset-submit" data-label="Send reset link" onclick="doResetPassword()" style="width:100%;background:var(--sangria);color:var(--cream);border:none;padding:13px;border-radius:100px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;">Send reset link</button>
+          <div style="text-align:center;margin-top:1.25rem;"><a onclick="showPage('login')" style="font-size:13px;color:var(--sangria-mid);cursor:pointer;">Back to log in</a></div>
+        </div>
+        <div id="reset-success" style="display:none;text-align:center;padding:1rem 0;">
+          <div style="font-size:32px;margin-bottom:1rem;">♪</div>
+          <p style="font-size:15px;color:var(--sangria-dark);font-weight:500;margin-bottom:.5rem;">Check your email</p>
+          <p style="font-size:14px;color:#888;line-height:1.6;">We sent a password reset link. It may take a minute to arrive.</p>
+          <button onclick="showPage('login')" style="background:none;border:1px solid rgba(123,45,66,.3);color:var(--sangria-mid);border-radius:100px;padding:10px 24px;font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:1.25rem;">Back to log in</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROFILE PAGE ===== -->
+<div id="page-profile" class="page">
+  <div id="profile-page-content">
+    <div style="text-align:center;padding:4rem;color:#aaa;">Loading profile...</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// =============================================
+// SUPABASE CONFIG — paste your credentials here
+// =============================================
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+
+// Auth is optional — if Supabase CDN didn't load or creds aren't set, page still works
+let sb = null;
+try {
+  if (typeof supabase !== 'undefined' && SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
+    sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+} catch(e) { console.warn('Supabase not available:', e); }
+
+let currentUser = null;
+let currentProfile = null;
+
+async function authInit() {
+  if (!sb) return;
+  try {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) await loadUser(session.user);
+    sb.auth.onAuthStateChange(async (event, session) => {
+      if (session) await loadUser(session.user);
+      else { currentUser = null; currentProfile = null; updateNavForUser(); }
+    });
+  } catch(e) { console.warn('Auth init failed:', e); }
+}
+
+async function loadUser(user) {
+  if (!sb) return;
+  currentUser = user;
+  const { data } = await sb.from('profiles').select('*').eq('id', user.id).single();
+  currentProfile = data;
+  updateNavForUser();
+}
+
+function updateNavForUser() {
+  const loginBtn = document.getElementById('nav-login');
+  const signupBtn = document.getElementById('nav-signup');
+  const profileBtn = document.getElementById('nav-profile');
+  const logoutBtn = document.getElementById('nav-logout');
+  if (currentUser && currentProfile) {
+    loginBtn && (loginBtn.style.display = 'none');
+    signupBtn && (signupBtn.style.display = 'none');
+    profileBtn && (profileBtn.style.display = 'flex');
+    logoutBtn && (logoutBtn.style.display = 'block');
+    const initials = ((currentProfile.first_name||'')[0]||'') + ((currentProfile.last_name||'')[0]||'');
+    const avatar = document.getElementById('nav-avatar');
+    if (avatar) { avatar.textContent = initials.toUpperCase() || currentUser.email[0].toUpperCase(); }
+    const navName = document.getElementById('nav-name');
+    if (navName) navName.textContent = currentProfile.first_name || currentUser.email.split('@')[0];
+  } else {
+    loginBtn && (loginBtn.style.display = 'block');
+    signupBtn && (signupBtn.style.display = 'block');
+    profileBtn && (profileBtn.style.display = 'none');
+    logoutBtn && (logoutBtn.style.display = 'none');
+  }
+}
+
+async function doSignup() {
+  if (!sb) return showAuthError('signup-error', 'Auth not configured yet. See setup guide.');
+  clearAuthError('signup-error');
+  const type = window._signupType || 'seeker';
+  const firstName = document.getElementById('su-firstname').value.trim();
+  const lastName = document.getElementById('su-lastname').value.trim();
+  const email = document.getElementById('su-email').value.trim();
+  const password = document.getElementById('su-password').value;
+  const sector = document.getElementById('su-sector')?.value || '';
+  const location = document.getElementById('su-location')?.value.trim() || '';
+  const yearsExp = document.getElementById('su-years')?.value || '';
+  const companyName = document.getElementById('su-company')?.value.trim() || '';
+  const roleTitle = document.getElementById('su-roletitle')?.value.trim() || '';
+
+  if (!firstName || !lastName) return showAuthError('signup-error', 'Please enter your first and last name.');
+  if (!email || !email.includes('@')) return showAuthError('signup-error', 'Please enter a valid email address.');
+  if (password.length < 8) return showAuthError('signup-error', 'Password must be at least 8 characters.');
+  if (type === 'seeker' && !sector) return showAuthError('signup-error', 'Please select your sector.');
+  if (type === 'employer' && !companyName) return showAuthError('signup-error', 'Please enter your company name.');
+
+  setAuthLoading('btn-signup-submit', true);
+
+  const { data, error } = await sb.auth.signUp({ email, password });
+  if (error) { setAuthLoading('btn-signup-submit', false); return showAuthError('signup-error', error.message); }
+
+  const colors = ['#7B2D42','#9E3D55','#5C1F30','#A0442A','#6A1B9A','#1565C0','#2E7D32','#BF360C'];
+  const avatarColor = colors[Math.floor(Math.random() * colors.length)];
+
+  const { error: profErr } = await sb.from('profiles').insert({
+    id: data.user.id, type, first_name: firstName, last_name: lastName,
+    company_name: companyName, role_title: roleTitle,
+    sector, location, years_exp: yearsExp, avatar_color: avatarColor
+  });
+
+  setAuthLoading('btn-signup-submit', false);
+  if (profErr) return showAuthError('signup-error', 'Account created but profile failed to save. Try logging in.');
+
+  document.getElementById('signup-success').style.display = 'block';
+  document.getElementById('signup-form-inner').style.display = 'none';
+}
+
+async function doLogin() {
+  if (!sb) return showAuthError('login-error', 'Auth not configured yet. See setup guide.');
+  clearAuthError('login-error');
+  const email = document.getElementById('li-email').value.trim();
+  const password = document.getElementById('li-password').value;
+  if (!email || !password) return showAuthError('login-error', 'Please enter your email and password.');
+  setAuthLoading('btn-login-submit', true);
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  setAuthLoading('btn-login-submit', false);
+  if (error) return showAuthError('login-error', error.message === 'Invalid login credentials' ? 'Incorrect email or password.' : error.message);
+  showPage('profile');
+}
+
+async function doLogout() {
+  if (!sb) return;
+  await sb.auth.signOut(); showPage('browse');
+}
+
+async function doResetPassword() {
+  if (!sb) return showAuthError('reset-error', 'Auth not configured yet.');
+  clearAuthError('reset-error');
+  const email = document.getElementById('reset-email').value.trim();
+  if (!email) return showAuthError('reset-error', 'Please enter your email address.');
+  setAuthLoading('btn-reset-submit', true);
+  const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: window.location.href });
+  setAuthLoading('btn-reset-submit', false);
+  if (error) return showAuthError('reset-error', error.message);
+  document.getElementById('reset-success').style.display = 'block';
+  document.getElementById('reset-form-inner').style.display = 'none';
+}
+
+async function saveProfile() {
+  if (!sb || !currentUser) return;
+  clearAuthError('profile-save-msg');
+  const updates = {
+    first_name: document.getElementById('prof-firstname').value.trim(),
+    last_name: document.getElementById('prof-lastname').value.trim(),
+    sector: document.getElementById('prof-sector').value,
+    location: document.getElementById('prof-location').value.trim(),
+    years_exp: document.getElementById('prof-years').value,
+    bio: document.getElementById('prof-bio').value.trim(),
+    role_title: document.getElementById('prof-roletitle')?.value.trim() || '',
+    company_name: document.getElementById('prof-company')?.value.trim() || '',
+  };
+  setAuthLoading('btn-save-profile', true);
+  const { error } = await sb.from('profiles').update(updates).eq('id', currentUser.id);
+  setAuthLoading('btn-save-profile', false);
+  if (error) return showAuthError('profile-save-msg', 'Failed to save. Please try again.');
+  currentProfile = { ...currentProfile, ...updates };
+  updateNavForUser();
+  document.getElementById('profile-save-msg').textContent = 'Profile saved!';
+  document.getElementById('profile-save-msg').style.color = 'var(--sangria-mid)';
+  setTimeout(() => { document.getElementById('profile-save-msg').textContent = ''; }, 3000);
+}
+
+async function doChangePassword() {
+  if (!sb) return showAuthError('pwd-error', 'Auth not configured yet.');
+  clearAuthError('pwd-error');
+  const np = document.getElementById('new-password').value;
+  const cp = document.getElementById('confirm-password').value;
+  if (np.length < 8) return showAuthError('pwd-error', 'Password must be at least 8 characters.');
+  if (np !== cp) return showAuthError('pwd-error', 'Passwords do not match.');
+  setAuthLoading('btn-change-pwd', true);
+  const { error } = await sb.auth.updateUser({ password: np });
+  setAuthLoading('btn-change-pwd', false);
+  if (error) return showAuthError('pwd-error', error.message);
+  document.getElementById('pwd-error').textContent = 'Password updated!';
+  document.getElementById('pwd-error').style.color = 'var(--sangria-mid)';
+  document.getElementById('new-password').value = '';
+  document.getElementById('confirm-password').value = '';
+}
+
+function showAuthError(id, msg) {
+  const el = document.getElementById(id);
+  if (el) { el.textContent = msg; el.style.color = '#c0392b'; }
+}
+function clearAuthError(id) {
+  const el = document.getElementById(id);
+  if (el) { el.textContent = ''; }
+}
+function setAuthLoading(id, loading) {
+  const btn = document.getElementById(id);
+  if (!btn) return;
+  btn.disabled = loading;
+  btn.textContent = loading ? 'Please wait...' : btn.dataset.label || btn.textContent;
+}
+
+// Signup type toggle
+window._signupType = 'seeker';
+function setSignupType(type) {
+  window._signupType = type;
+  const seekerBtn = document.getElementById('signup-seeker');
+  const employerBtn = document.getElementById('signup-employer');
+  const seekerFields = document.getElementById('seeker-fields');
+  const employerFields = document.getElementById('employer-fields');
+  if (type === 'seeker') {
+    seekerBtn.style.cssText = 'flex:1;padding:10px;border-radius:10px;font-size:14px;font-family:DM Sans,sans-serif;cursor:pointer;border:2px solid var(--sangria);background:var(--sangria-pale);color:var(--sangria-dark);font-weight:500;';
+    employerBtn.style.cssText = 'flex:1;padding:10px;border-radius:10px;font-size:14px;font-family:DM Sans,sans-serif;cursor:pointer;border:1px solid rgba(123,45,66,.2);background:transparent;color:#888;font-weight:normal;';
+    seekerFields.style.display = 'block';
+    employerFields.style.display = 'none';
+  } else {
+    employerBtn.style.cssText = 'flex:1;padding:10px;border-radius:10px;font-size:14px;font-family:DM Sans,sans-serif;cursor:pointer;border:2px solid var(--sangria);background:var(--sangria-pale);color:var(--sangria-dark);font-weight:500;';
+    seekerBtn.style.cssText = 'flex:1;padding:10px;border-radius:10px;font-size:14px;font-family:DM Sans,sans-serif;cursor:pointer;border:1px solid rgba(123,45,66,.2);background:transparent;color:#888;font-weight:normal;';
+    seekerFields.style.display = 'none';
+    employerFields.style.display = 'block';
+  }
+}
+
+function renderProfilePage() {
+  if (!currentUser || !currentProfile) { showPage('login'); return; }
+  const p = currentProfile;
+  const isSeeker = p.type === 'seeker';
+  const initials = ((p.first_name||'')[0]||'') + ((p.last_name||'')[0]||'');
+  const avatarColor = p.avatar_color || 'var(--sangria)';
+  const savedCount = Object.keys(JSON.parse(localStorage.getItem('sc_saved')||'{}')).length;
+
+  document.getElementById('profile-page-content').innerHTML = `
+    <div style="background:var(--sangria-deep);padding:2.5rem 2rem;position:relative;overflow:hidden;">
+      <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+        <div style="width:72px;height:72px;border-radius:50%;background:${avatarColor};display:flex;align-items:center;justify-content:center;font-family:Playfair Display,serif;font-size:26px;font-weight:700;color:white;flex-shrink:0;">${initials.toUpperCase()||currentUser.email[0].toUpperCase()}</div>
+        <div>
+          <h1 style="font-family:Playfair Display,serif;font-size:26px;color:var(--cream);margin-bottom:.2rem;">${p.first_name||''} ${p.last_name||''}</h1>
+          <p style="color:rgba(250,245,240,.6);font-size:14px;">${isSeeker ? (p.sector||'Job seeker') : (p.company_name||'Employer')} ${p.location ? '· '+p.location : ''}</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:900px;margin:0 auto;padding:2rem 2.5rem 4rem;display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start;">
+
+      <div style="background:white;border:1px solid rgba(123,45,66,.12);border-radius:12px;overflow:hidden;position:sticky;top:80px;">
+        <button onclick="showProfileTab('tab-details')" id="ptab-details" style="width:100%;text-align:left;padding:.85rem 1.25rem;font-size:14px;font-family:DM Sans,sans-serif;cursor:pointer;border:none;border-bottom:1px solid rgba(123,45,66,.08);background:var(--sangria-pale);color:var(--sangria-dark);font-weight:500;">Profile details</button>
+        <button onclick="showProfileTab('tab-saved')" id="ptab-saved" style="width:100%;text-align:left;padding:.85rem 1.25rem;font-size:14px;font-family:DM Sans,sans-serif;cursor:pointer;border:none;border-bottom:1px solid rgba(123,45,66,.08);background:transparent;color:#666;">Saved jobs (${savedCount})</button>
+        <button onclick="showProfileTab('tab-security')" id="ptab-security" style="width:100%;text-align:left;padding:.85rem 1.25rem;font-size:14px;font-family:DM Sans,sans-serif;cursor:pointer;border:none;background:transparent;color:#666;">Password and security</button>
+      </div>
+
+      <div>
+        <div id="tab-details" class="profile-tab">
+          <div style="background:white;border:1px solid rgba(123,45,66,.12);border-radius:14px;padding:2rem;">
+            <h2 style="font-family:Playfair Display,serif;font-size:18px;color:var(--sangria-dark);margin-bottom:1.5rem;">Profile details</h2>
+            <div class="field-row">
+              <div class="field"><label>First name</label><input id="prof-firstname" type="text" value="${p.first_name||''}"/></div>
+              <div class="field"><label>Last name</label><input id="prof-lastname" type="text" value="${p.last_name||''}"/></div>
+            </div>
+            ${isSeeker ? `
+            <div class="field"><label>Sector</label>
+              <select id="prof-sector">
+                ${['','Labels and Publishing','Sync and Licensing','Live and Touring','Streaming and Tech','Artist Management','Marketing and PR','Radio and Media','Production and Studio'].map(s=>`<option value="${s}" ${p.sector===s?'selected':''}>${s||'Select...'}</option>`).join('')}
+              </select>
+            </div>
+            <div class="field"><label>Years of experience</label>
+              <select id="prof-years">
+                ${['','0 to 1 year','1 to 3 years','3 to 5 years','5 to 10 years','10+ years'].map(y=>`<option value="${y}" ${p.years_exp===y?'selected':''}>${y||'Select...'}</option>`).join('')}
+              </select>
+            </div>
+            <div class="field"><label>Current location</label><input id="prof-location" type="text" value="${p.location||''}" placeholder="e.g. London"/></div>
+            <div class="field"><label>Bio</label><textarea id="prof-bio" placeholder="A short bio for your profile..." style="min-height:100px;">${p.bio||''}</textarea></div>
+            <input id="prof-roletitle" type="hidden" value="${p.role_title||''}"/>
+            <input id="prof-company" type="hidden" value="${p.company_name||''}"/>
+            ` : `
+            <div class="field"><label>Company name</label><input id="prof-company" type="text" value="${p.company_name||''}"/></div>
+            <div class="field"><label>Your role</label><input id="prof-roletitle" type="text" value="${p.role_title||''}"/></div>
+            <div class="field"><label>Location</label><input id="prof-location" type="text" value="${p.location||''}" placeholder="e.g. London"/></div>
+            <div class="field"><label>Bio</label><textarea id="prof-bio" placeholder="About your company..." style="min-height:100px;">${p.bio||''}</textarea></div>
+            <select id="prof-sector" style="display:none;"><option value="${p.sector||''}" selected></option></select>
+            <select id="prof-years" style="display:none;"><option value="${p.years_exp||''}" selected></option></select>
+            `}
+            <div style="display:flex;align-items:center;gap:1rem;margin-top:.5rem;">
+              <button id="btn-save-profile" data-label="Save changes" onclick="saveProfile()" style="background:var(--sangria);color:var(--cream);border:none;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;cursor:pointer;">Save changes</button>
+              <span id="profile-save-msg" style="font-size:13px;"></span>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-saved" class="profile-tab" style="display:none;">
+          <div style="background:white;border:1px solid rgba(123,45,66,.12);border-radius:14px;padding:2rem;">
+            <h2 style="font-family:Playfair Display,serif;font-size:18px;color:var(--sangria-dark);margin-bottom:1.5rem;">Saved jobs</h2>
+            ${(()=>{
+              const saved = JSON.parse(localStorage.getItem('sc_saved')||'{}');
+              const ids = Object.keys(saved);
+              if (!ids.length) return '<p style="color:#aaa;font-size:14px;">You have not saved any jobs yet. Browse roles and click Save to keep track of them here.</p>';
+              return ids.map(id=>`
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;border-bottom:1px solid rgba(123,45,66,.08);">
+                  <div>
+                    <div style="font-size:15px;font-weight:500;color:var(--ink);cursor:pointer;" onclick="openJob('${id}')">${saved[id]}</div>
+                    <div style="font-size:12px;color:#bbb;margin-top:2px;">Saved</div>
+                  </div>
+                  <button onclick="toggleSave('${id}','${saved[id].replace(/'/g,"\\'")}');renderProfilePage();" style="background:none;border:1px solid rgba(123,45,66,.2);border-radius:100px;padding:5px 14px;font-size:12px;color:var(--sangria-mid);cursor:pointer;font-family:DM Sans,sans-serif;">Remove</button>
+                </div>`).join('');
+            })()}
+          </div>
+        </div>
+
+        <div id="tab-security" class="profile-tab" style="display:none;">
+          <div style="background:white;border:1px solid rgba(123,45,66,.12);border-radius:14px;padding:2rem;">
+            <h2 style="font-family:Playfair Display,serif;font-size:18px;color:var(--sangria-dark);margin-bottom:.25rem;">Password and security</h2>
+            <p style="font-size:13px;color:#aaa;margin-bottom:1.5rem;">Signed in as ${currentUser.email}</p>
+            <div class="field"><label>New password</label><input id="new-password" type="password" placeholder="At least 8 characters"/></div>
+            <div class="field"><label>Confirm new password</label><input id="confirm-password" type="password" placeholder="Repeat new password"/></div>
+            <span id="pwd-error" style="font-size:13px;display:block;margin-bottom:1rem;"></span>
+            <button id="btn-change-pwd" data-label="Update password" onclick="doChangePassword()" style="background:var(--sangria);color:var(--cream);border:none;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:500;font-family:DM Sans,sans-serif;cursor:pointer;">Update password</button>
+            <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(123,45,66,.08);">
+              <button onclick="doLogout()" style="background:none;border:1px solid rgba(123,45,66,.2);color:var(--sangria-mid);border-radius:100px;padding:10px 24px;font-size:14px;font-family:DM Sans,sans-serif;cursor:pointer;">Sign out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function showProfileTab(tabId) {
+  document.querySelectorAll('.profile-tab').forEach(t => t.style.display = 'none');
+  document.getElementById(tabId).style.display = 'block';
+  ['tab-details','tab-saved','tab-security'].forEach(id => {
+    const btn = document.getElementById('p' + id);
+    if (btn) { btn.style.background = id === tabId ? 'var(--sangria-pale)' : 'transparent'; btn.style.color = id === tabId ? 'var(--sangria-dark)' : '#666'; btn.style.fontWeight = id === tabId ? '500' : 'normal'; }
+  });
+}
+
+const JOBS = {};
+document.querySelectorAll('.job-card[data-id]').forEach(c => {
+  JOBS[c.dataset.id] = {
+    id: c.dataset.id, title: c.querySelector('.job-title').textContent,
+    company: c.dataset.company, meta: c.querySelector('.job-meta').innerHTML,
+    logo: c.querySelector('.job-logo').outerHTML,
+    deadline: c.dataset.deadline, cat: c.dataset.cat, work: c.dataset.work,
+    applyUrl: '#'
+  };
+});
+
+const COMPANIES_DATA = [
+  {id:'warner',name:'Warner Music UK',initials:'WM',color:'#F5E8EC',fg:'#7B2D42',sector:'Major Label',size:'1,000+ employees',jobs:['j1']},
+  {id:'spotify',name:'Spotify',initials:'SP',color:'#E8F5E9',fg:'#2E7D32',sector:'Streaming',size:'9,000+ employees',jobs:['j2']},
+  {id:'bmg',name:'BMG Rights',initials:'BMG',color:'#E3F2FD',fg:'#1565C0',sector:'Publishing',size:'800+ employees',jobs:['j3']},
+  {id:'umg',name:'Universal Music Group',initials:'UMG',color:'#F5E8EC',fg:'#7B2D42',sector:'Major Label',size:'10,000+ employees',jobs:['j5']},
+  {id:'apple',name:'Apple Music',initials:'AP',color:'#E3F2FD',fg:'#1565C0',sector:'Streaming',size:'100,000+ employees',jobs:['j7']},
+  {id:'sony',name:'Sony Music',initials:'SM',color:'#F5E8EC',fg:'#7B2D42',sector:'Major Label',size:'8,000+ employees',jobs:['j12']},
+  {id:'prs',name:'PRS for Music',initials:'PRS',color:'#FFF3E0',fg:'#BF360C',sector:'Rights',size:'400+ employees',jobs:['j9']},
+  {id:'nme',name:'NME Networks',initials:'NME',color:'#F3E5F5',fg:'#6A1B9A',sector:'Media',size:'200+ employees',jobs:['j6']},
+];
+
+// ===== PAGE NAV =====
+function showPage(name, extra) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-' + name);
+  if (!page) return;
+  page.classList.add('active');
+  window.scrollTo(0,0);
+  if (name === 'post') { document.getElementById('post-form').style.display='block'; document.getElementById('success-screen').style.display='none'; }
+  if (name === 'companies') renderCompanies();
+  if (name === 'company-profile' && extra) renderCompanyProfile(extra);
+  if (name === 'profile') renderProfilePage();
+  if (name === 'reset') { document.getElementById('reset-form-inner').style.display='block'; document.getElementById('reset-success').style.display='none'; document.getElementById('reset-error').textContent=''; }
+}
+
+// ===== DEADLINE RENDERING =====
+function renderDeadlines() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  document.querySelectorAll('.job-card[data-deadline]').forEach(card => {
+    const dl = new Date(card.dataset.deadline);
+    const diff = Math.round((dl - today) / 86400000);
+    const el = document.getElementById('dl-' + card.dataset.id);
+    if (!el) return;
+    if (diff < 0) {
+      el.textContent = 'Expired';
+      el.className = 'job-deadline soon';
+      card.style.opacity = '.6';
+    } else if (diff === 0) {
+      el.textContent = 'Closes today';
+      el.className = 'job-deadline soon';
+    } else if (diff <= 7) {
+      el.textContent = 'Closes in ' + diff + ' day' + (diff>1?'s':'');
+      el.className = 'job-deadline soon';
+    } else {
+      el.textContent = 'Closes ' + dl.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+      el.className = 'job-deadline';
+    }
+  });
+}
+
+// ===== SAVED JOBS =====
+let savedJobs = JSON.parse(localStorage.getItem('sc_saved') || '{}');
+
+function toggleSave(id, title) {
+  if (savedJobs[id]) { delete savedJobs[id]; }
+  else { savedJobs[id] = title; }
+  localStorage.setItem('sc_saved', JSON.stringify(savedJobs));
+  renderSavedPanel();
+  updateSaveButtons();
+}
+
+function updateSaveButtons() {
+  document.querySelectorAll('.save-btn').forEach(btn => {
+    const id = btn.id.replace('save-','');
+    btn.textContent = savedJobs[id] ? '' : '';
+    btn.style.color = savedJobs[id] ? 'var(--sangria)' : '#ccc';
+  });
+}
+
+function renderSavedPanel() {
+  const panel = document.getElementById('saved-panel');
+  const chips = document.getElementById('saved-chips');
+  const ids = Object.keys(savedJobs);
+  panel.className = ids.length ? 'saved-panel has-saves' : 'saved-panel';
+  chips.innerHTML = ids.map(id => `<span class="saved-chip" onclick="openJob('${id}')"><span>${savedJobs[id]}</span><button onclick="event.stopPropagation();toggleSave('${id}','')"></button></span>`).join('');
+}
+
+function clearSavedJobs() {
+  savedJobs = {};
+  localStorage.setItem('sc_saved', '{}');
+  renderSavedPanel();
+  updateSaveButtons();
+}
+
+// ===== JOB DETAIL PAGE =====
+function openJob(id) {
+  const j = JOBS[id];
+  if (!j) return;
+  const dl = new Date(j.deadline);
+  const today = new Date(); today.setHours(0,0,0,0);
+  const diff = Math.round((dl - today) / 86400000);
+  const dlStr = diff < 0 ? '<span style="color:#BF360C;font-weight:500;">Expired</span>' :
+    diff === 0 ? '<span style="color:#BF360C;font-weight:500;">Closes today</span>' :
+    diff <= 7 ? `<span style="color:#BF360C;font-weight:500;">Closes in ${diff} day${diff>1?'s':''}</span>` :
+    `Closes ${dl.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}`;
+
+  document.getElementById('job-detail-content').innerHTML = `
+    <div style="background:var(--sangria-deep);padding:2.5rem 2rem;position:relative;overflow:hidden;">
+      <div style="max-width:960px;margin:0 auto;">
+        <div class="back-crumb" onclick="showPage('browse')">← Back to jobs</div>
+        <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+          ${j.logo.replace('52px','72px').replace('52px','72px').replace('font-size:15px','font-size:20px')}
+          <div>
+            <h1 style="font-family:'Playfair Display',serif;font-size:28px;color:var(--cream);margin-bottom:.25rem;">${j.title}</h1>
+            <div style="font-size:14px;color:rgba(250,245,240,.7);display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;">
+              <span>${j.meta.replace(/<[^>]+>/g,' ')}</span>
+            </div>
+            <div style="margin-top:.5rem;font-size:13px;color:var(--sangria-light);">${dlStr}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:960px;margin:2rem auto;padding:0 2.5rem 4rem;display:grid;grid-template-columns:1fr 300px;gap:2rem;align-items:start;">
+      <div>
+        <div class="form-section" style="margin-bottom:1.5rem;">
+          <div class="form-section-title">About the role</div>
+          <div style="margin-top:1rem;line-height:1.8;color:#444;font-size:15px;">
+            <p>This is an exciting opportunity to join the team at ${j.company}. You will be working across a wide range of projects, collaborating with talented colleagues and contributing to the continued success of one of the music industry's leading organisations.</p>
+            <p style="margin-top:1rem;">The role offers genuine responsibility from day one, with room to grow and develop your career in the music business.</p>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">What we are looking for</div>
+          <ul style="margin-top:1rem;padding-left:1.25rem;line-height:2;color:#444;font-size:15px;">
+            <li>Passion for music and the wider industry</li>
+            <li>Strong communication and organisational skills</li>
+            <li>Experience in a relevant field (see listing for specifics)</li>
+            <li>Ability to work independently and as part of a team</li>
+          </ul>
+        </div>
+      </div>
+      <div style="position:sticky;top:80px;">
+        <div class="form-section" style="text-align:center;">
+          <a class="apply-btn" href="${j.applyUrl && j.applyUrl !== '#' ? j.applyUrl : 'mailto:jobs@spinchirp.com?subject=Application: '+encodeURIComponent(j.title)}" target="_blank" style="display:block;padding:14px;font-size:15px;border-radius:12px;margin-bottom:.75rem;">Apply for this role</a>
+          <button class="save-btn" style="font-size:22px;color:${savedJobs[id]?'var(--sangria)':'#ccc'};" onclick="toggleSave('${id}','${j.title.replace(/'/g,"\\'")}');this.textContent=savedJobs['${id}']?'Saved':'Save';this.style.color=savedJobs['${id}']?'var(--sangria)':'#ccc';">Save</button>
+          <div style="font-size:12px;color:#bbb;margin-top:4px;">${savedJobs[id]?'Saved':'Save job'}</div>
+          <div class="form-section-divider"></div>
+          <div style="text-align:left;font-size:13px;color:#666;line-height:2;">
+            <div><strong style="color:var(--ink);">Company</strong><br>${j.company}</div>
+            <div style="margin-top:.5rem;"><strong style="color:var(--ink);">Deadline</strong><br>${dlStr}</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:1rem;">
+          <button onclick="showPage('browse')" style="background:none;border:1px solid rgba(123,45,66,.3);color:var(--sangria-mid);border-radius:100px;padding:10px 24px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;">See all roles</button>
+        </div>
+      </div>
+    </div>`;
+  showPage('job');
+}
+
+// ===== COMPANIES =====
+function renderCompanies() {
+  document.getElementById('companies-grid').innerHTML = COMPANIES_DATA.map(c => `
+    <div class="company-card" onclick="renderCompanyProfile('${c.id}')">
+      <div class="company-logo-lg" style="background:${c.color};color:${c.fg};">${c.initials}</div>
+      <div class="company-name">${c.name}</div>
+      <div class="company-meta">${c.sector} · ${c.size}</div>
+      <div class="company-open">${c.jobs.length} open role${c.jobs.length!==1?'s':''}</div>
+    </div>`).join('');
+}
+
+function renderCompanyProfile(cid) {
+  const c = COMPANIES_DATA.find(x => x.id === cid);
+  if (!c) return;
+  const jobsHtml = c.jobs.map(jid => {
+    const j = JOBS[jid];
+    if (!j) return '';
+    return `<div class="job-card" style="transform:none;" onclick="openJob('${jid}')">
+      ${j.logo}
+      <div>
+        <div class="job-title">${j.title}</div>
+        <div class="job-meta">${j.meta}</div>
+      </div>
+      <div class="job-right"><div class="tag tag-hybrid">${j.work}</div></div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('company-profile-content').innerHTML = `
+    <div class="company-profile-header">
+      <div class="cp-inner">
+        <div class="cp-logo" style="background:${c.color};color:${c.fg};">${c.initials}</div>
+        <div class="cp-info">
+          <div class="back-crumb" onclick="showPage('companies')">← All companies</div>
+          <h1>${c.name}</h1>
+          <p>${c.sector} · ${c.size}</p>
+          <div class="cp-tags"><span class="cp-tag">${c.sector}</span><span class="cp-tag">${c.jobs.length} open role${c.jobs.length!==1?'s':''}</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:960px;margin:2rem auto;padding:0 2.5rem 4rem;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--sangria-dark);margin-bottom:1.25rem;">Open roles at ${c.name}</h2>
+      <div class="jobs">${jobsHtml}</div>
+    </div>`;
+  showPage('company-profile');
+}
+
+// ===== ALERTS MODAL =====
+function openAlerts() { document.getElementById('alerts-modal').classList.add('open'); }
+function closeAlerts() {
+  document.getElementById('alerts-modal').classList.remove('open');
+  document.getElementById('alerts-form-view').style.display='block';
+  document.getElementById('alerts-success-view').style.display='none';
+}
+function submitAlerts() {
+  const email = document.getElementById('alert-email').value.trim();
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  document.getElementById('alerts-form-view').style.display='none';
+  document.getElementById('alerts-success-view').style.display='block';
+}
+document.querySelectorAll('.freq-pill').forEach(p => {
+  p.addEventListener('click', () => {
+    document.querySelectorAll('.freq-pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+  });
+});
+document.getElementById('alerts-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('alerts-modal')) closeAlerts();
+});
+
+// ===== BROWSE FILTERS =====
+let activeCat='all', minSalaryVal=20000, selectedCities=[], activeFilters={};
+const excludedFromCities = new Set(['worldwide','touring']);
+const allCities = [...new Set([...document.querySelectorAll('.job-card[data-city]')].map(c=>c.dataset.city).filter(c=>c&&!excludedFromCities.has(c)))].sort();
+
+function buildCityDropdown(filter) {
+  const dd = document.getElementById('city-dropdown');
+  const q = (filter||'').toLowerCase();
+  const filtered = allCities.filter(c=>!q||c.includes(q));
+  dd.innerHTML = filtered.map(city=>{
+    const label = city.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+    const sel = selectedCities.includes(city)?' selected':'';
+    return `<div class="city-option${sel}" onmousedown="toggleCity('${city}')">${label}</div>`;
+  }).join('') || '<div class="city-option" style="color:#bbb;cursor:default;">No cities found</div>';
+}
+function filterCities(v){buildCityDropdown(v);document.getElementById('city-dropdown').classList.add('open');}
+function openDropdown(){buildCityDropdown(document.getElementById('city-search').value);document.getElementById('city-dropdown').classList.add('open');}
+function closeDropdown(){setTimeout(()=>document.getElementById('city-dropdown').classList.remove('open'),150);}
+function toggleCity(city){
+  selectedCities=selectedCities.includes(city)?selectedCities.filter(c=>c!==city):[...selectedCities,city];
+  document.getElementById('city-search').value='';
+  buildCityDropdown(''); renderCityTags(); applyFilters();
+}
+function renderCityTags(){
+  document.getElementById('city-tags').innerHTML=selectedCities.map(city=>{
+    const label=city.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+    return `<span class="city-tag">${label}<button onmousedown="toggleCity('${city}')" title="Remove"></button></span>`;
+  }).join('');
+}
+
+document.querySelectorAll('#cat-pills .fpill').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#cat-pills .fpill').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); activeCat=btn.dataset.cat; applyFilters();
+  });
+});
+document.querySelectorAll('.fpill[data-filter]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const f=btn.dataset.filter,v=btn.dataset.value;
+    if(!activeFilters[f]) activeFilters[f]=new Set();
+    if(activeFilters[f].has(v)){activeFilters[f].delete(v);btn.classList.remove('active');}
+    else{activeFilters[f].add(v);btn.classList.add('active');}
+    applyFilters();
+  });
+});
+
+function fmtK(k){ return k>0?(k*1000).toLocaleString('en-GB'):''; }
+function syncSalaryFromSlider(val){
+  val=parseInt(val); minSalaryVal=val*1000;
+  const ti=document.getElementById('salary-text');
+  ti.value=val>0?fmtK(val):''; ti.placeholder=val>0?'':'No minimum';
+  updateSliderFill(val);
+  document.getElementById('no-min-btn').classList.toggle('active',val===0);
+  applyFilters();
+}
+function syncSalaryFromText(input){
+  const raw=input.value.replace(/[^0-9]/g,'');
+  const num=parseInt(raw)||0; minSalaryVal=num;
+  const formatted=num>0?num.toLocaleString('en-GB'):'';
+  // preserve cursor at end
+  const pos=input.selectionStart; input.value=formatted;
+  const k=Math.min(Math.round(num/1000),200);
+  document.getElementById('salary-range').value=k; updateSliderFill(k);
+  document.getElementById('no-min-btn').classList.toggle('active',num===0);
+  applyFilters();
+}
+function updateSliderFill(val){
+  document.getElementById('salary-range').style.setProperty('--pct',(val/200*100)+'%');
+}
+function clearSalary(){
+  minSalaryVal=0;
+  document.getElementById('salary-range').value=0;
+  document.getElementById('salary-text').value='';
+  document.getElementById('salary-text').placeholder='No minimum';
+  updateSliderFill(0);
+  document.getElementById('no-min-btn').classList.add('active');
+  applyFilters();
+}
+
+function applyFilters(){
+  const query=document.getElementById('search-input').value.toLowerCase().trim();
+  let visible=0;
+  document.querySelectorAll('.job-card[data-id]').forEach(card=>{
+    const ls=activeFilters['level'],ws=activeFilters['work'],cs=activeFilters['contract'];
+    const show=(activeCat==='all'||card.dataset.cat===activeCat)&&
+      (!ls||ls.size===0||ls.has(card.dataset.level))&&
+      (!ws||ws.size===0||ws.has(card.dataset.work))&&
+      (!cs||cs.size===0||cs.has(card.dataset.contract))&&
+      (minSalaryVal===0||parseInt(card.dataset.salary)>=minSalaryVal)&&
+      (selectedCities.length===0||selectedCities.includes(card.dataset.city))&&
+      (query===''||card.dataset.title.includes(query));
+    card.classList.toggle('hidden',!show);
+    if(show) visible++;
+  });
+  document.getElementById('results-count').textContent=visible+' open position'+(visible!==1?'s':'');
+  document.getElementById('stat-live').textContent=visible;
+  document.getElementById('no-results').style.display=visible===0?'block':'none';
+}
+
+function clearAll(){
+  activeCat='all'; activeFilters={}; selectedCities=[];
+  document.querySelectorAll('#cat-pills .fpill').forEach(b=>b.classList.remove('active'));
+  document.querySelector('#cat-pills .fpill[data-cat="all"]').classList.add('active');
+  document.querySelectorAll('.fpill[data-filter]').forEach(b=>b.classList.remove('active'));
+  document.getElementById('search-input').value='';
+  renderCityTags();
+  minSalaryVal=20000;
+  document.getElementById('salary-range').value=20;
+  document.getElementById('salary-text').value='20,000';
+  updateSliderFill(20);
+  document.getElementById('no-min-btn').classList.remove('active');
+  applyFilters();
+}
+
+// ===== POST PAGE =====
+function toggleTag(el){el.classList.toggle('on');}
+function handleLogo(input){
+  if(!input.files||!input.files[0]) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const zone=input.parentElement;
+    zone.innerHTML=`<img src="${e.target.result}" style="height:60px;border-radius:8px;object-fit:contain;" alt="Logo preview"/><div class="uz-sub" style="margin-top:6px;">Click to change</div><input type="file" id="logo-input" accept="image/*" onchange="handleLogo(this)" style="display:none;"/>`;
+    zone.onclick=()=>document.getElementById('logo-input').click();
+    document.getElementById('preview-logo').innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:contain;border-radius:8px;" alt="Logo"/>`;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+function updatePreview(){
+  const company=document.getElementById('f-company').value||'Your company';
+  const title=document.getElementById('f-title').value||'Your job title';
+  const city=document.getElementById('f-city').value||'Location';
+  const salLow=document.getElementById('f-sal-low').value;
+  const salHigh=document.getElementById('f-sal-high').value;
+  const currency=document.getElementById('f-sal-currency').value;
+  const work=document.getElementById('f-work').value;
+  const cur=currency.split(' ')[1]||'';
+  const salary=salLow&&salHigh?`${cur}${salLow} to ${cur}${salHigh}`:salLow||salHigh||'Salary TBC';
+  const logoEl=document.getElementById('preview-logo');
+  if(!logoEl.querySelector('img')) logoEl.textContent=company.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2)||'?';
+  document.getElementById('preview-title').textContent=title;
+  document.getElementById('preview-meta').textContent=`${company} · ${city} · ${salary}`;
+  document.getElementById('preview-tag').textContent=work||'Role type';
+}
+function submitForm(){
+  const req=[document.getElementById('f-company').value,document.getElementById('f-title').value,document.getElementById('f-city').value];
+  if(req.some(v=>!v.trim())){alert('Please fill in the company name, job title, and city before posting.');return;}
+  document.getElementById('post-form').style.display='none';
+  document.getElementById('success-screen').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ===== INIT =====
+minSalaryVal=20000;
+document.getElementById('salary-range').value=20;
+document.getElementById('salary-text').value='20,000';
+updateSliderFill(20);
+renderDeadlines();
+renderSavedPanel();
+updateSaveButtons();
+applyFilters();
+authInit();
+</script>
+</body>
+</html>

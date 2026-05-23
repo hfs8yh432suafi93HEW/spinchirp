@@ -1,0 +1,16 @@
+{
+  "name": "spinchirp-scraper",
+  "version": "1.0.0",
+  "description": "SpinChirp music job scraper",
+  "main": "scrape.js",
+  "scripts": {
+    "scrape": "node scrape.js",
+    "inject": "node inject.js",
+    "start": "node scrape.js && node inject.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0",
+    "p-limit": "^3.1.0"
+  }
+}
